@@ -1,0 +1,73 @@
+// Prerequisites - note that we don't include "grid.scss"
+// here as it generates a large amount of code and it doesn't
+// need to be included twice
+@import "global/include-media.scss";
+@import "global/variables.scss";
+@import "global/layout.scss";
+@import "global/forms.scss";
+
+/*
+    Properties
+*/
+:root {
+    // The height of the header - note that these are currently
+    // the same values as set in the TerSera theme's "styles.scss",
+    // but could be overridden for the sub-theme if necessary
+    --header-height: 88px;
+
+    @include media(">=small") {
+        --header-height: 119px;
+    }
+
+    @include media(">=medium") {
+        --header-height: 104px;
+    }
+}
+
+body {
+    font-family: $font-sans;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: $color-dark-gray;
+}
+
+// Don't affect base element styles in Drupal elements
+.dialog-off-canvas-main-canvas,
+.modal,
+.backdrop {
+    // Base Styles
+    @import "config/base.scss";
+
+    // Components
+    @import "components/buttons.scss";
+
+    @import "components/header.scss";
+    @import "components/footer.scss";
+
+    @import "components/cookie-banner.scss";
+    @import "components/cne-banner.scss";
+    @import "components/pi-banner.scss";
+
+    @import "components/homepage-hero.scss";
+    @import "components/hero.scss";
+    @import "components/circle-icons.scss";
+    @import "components/image-cell.scss";
+    @import "components/image-callout.scss";
+    @import "components/ctas.scss";
+    @import "components/gray-callout.scss";
+    @import "components/cne-locator.scss";
+    @import "components/recipes.scss";
+    @import "components/sign-up-form.scss";
+
+    @import "components/isi-content.scss";
+    @import "components/isi-tray.scss";
+
+    @import "components/references.scss";
+
+    // Page specific styles
+    @import "./page-specific-styles.scss";
+}
+
+// These appear directly within the body element
+@import "components/modal.scss";
+@import "components/leaving-site-modal.scss";

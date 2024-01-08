@@ -1,0 +1,253 @@
+// Xermelo base styles
+section {
+    // Additional stock section backgrounds would be defined here
+    &.background--gray {
+        background-color: $color-lighter-gray;
+
+        .grid {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+
+            @include media(">=small") {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+
+            .grid {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+// When gray background sections follow a .hero section,
+// remove the top margin
+section.hero + section.background--gray {
+    > .grid:first-child {
+        margin-top: 0;
+    }
+}
+
+// Footnote that appears between EOP callouts and references
+section.eop-callouts + section.eop-footnote {
+    > .grid {
+        margin-top: 5rem;
+        
+        @include media(">=small") {
+            margin-top: 5rem;
+        }
+    }
+}
+
+section.eop-footnote + section.references {
+    > .grid {
+        margin-top: 4rem;
+        
+        @include media(">=small") {
+            margin-top: 4rem;
+        }
+    }
+}
+
+// Header sizes; design isn't consistent, so we're
+// including expicit classes for overrides in the
+// HTML
+.h1-large-m {
+    font-size: 42px;
+    line-height: 48px;
+}
+
+.h1-large-d {
+    @include media(">=small") {
+        font-size: 56px;
+        line-height: 64px;
+    }
+    
+    @include media(">=large") {
+        font-size: 64px;
+        line-height: 72px;
+    }
+}
+
+.h1-small-m {
+    font-size: 30px;
+    line-height: 32px;
+}
+
+.h1-small-d {
+    @include media(">=small") {
+        font-size: 42px;
+        line-height: 48px;
+    }
+}
+
+.h2-m {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.h2-d {
+    @include media(">=small") {
+        font-size: 30px;
+        line-height: 32px;
+    }
+}
+
+.h3-m {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+}
+
+.h3-d {
+    @include media(">=small") {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+.h4-m {
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.h4-d {
+    @include media(">=small") {
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $font-sans-condensed;
+    color: $color-brand-purple;
+}
+
+// "H1 (large)" in the style guide
+h1 {
+    @extend .h1-large-m, .h1-large-d;
+
+    &.border--green {
+        position: relative;
+        margin-bottom: 5rem;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -2.5rem;
+            left: 0;
+            display: block;
+            width: 10rem;
+            height: 0.5rem;
+            background-color: $color-green;
+        }
+    }
+}
+
+h2 {
+    @extend .h2-m, .h2-d;
+}
+
+h3 {
+    @extend .h3-m, .h3-d;
+}
+
+h4 {
+    @extend .h4-m, .h4-d;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+    color: $color-brand-purple;
+    font-weight: normal;
+    text-decoration: underline;
+    position: relative;
+    &.link--icon-chevron-down {
+        padding-right: 5.25rem;
+        &:after {
+            content: "\e5cf";
+            padding-left: 1rem;
+            position: absolute;
+            top: 50%;
+            right: 2px;
+            transform: translate(0, -50%);
+            font-family: $font-material-symbols;
+            font-size: 42px;
+            font-weight: normal;
+            font-variation-settings:
+                'FILL'0,
+                'wght'400,
+                'GRAD'0,
+                'opsz'48;
+        }
+    }
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    > li {
+        &:before {
+            color: $color-brand-purple;
+        }
+    }
+
+    &.list--green-bullets {
+        > li {
+            &:before {
+                color: $color-green;
+            }
+        }
+    }
+}
+    
+.eyebrow {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+    font-family: $font-sans-condensed;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    color: $color-brand-purple;
+    
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -1rem;
+        left: 0;
+        display: block;
+        width: 10rem;
+        height: 0.5rem;
+        background-color: $color-green;
+    }
+
+    &.eyebrow--larger-margin {
+        margin-bottom: 4rem;
+
+        &:after {
+            bottom: -2rem;
+        }
+    }
+}
+
+.align-center .eyebrow {
+    &:after {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+.footnote {
+    font-size: 14px;
+    line-height: 16px;
+}

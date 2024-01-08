@@ -1,0 +1,123 @@
+section .grid.image-callout {
+    // This prevents horizontal scrolling, which the
+    // width setting on the inner img causes
+    // overflow: hidden;
+    padding-top: 0;
+
+    @include media(">=small") {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        z-index: 1;
+    }
+    
+    @include media(">=large") {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+
+    .image-callout--image {
+        @include media(">=small") {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: -1;
+        }
+
+        img {
+            position: relative;
+            left: calc(
+                -1 *
+                var(--grid-gutter-width)
+            );
+            width: calc(
+                100% +
+                (
+                    2 *
+                    var(--grid-gutter-width)
+                )
+            );
+            max-width: none;
+            display: block;
+            margin-bottom: 3rem;
+            
+            @include media(">=small") {
+                position: absolute;
+                top: 0;
+                left: auto;
+                right: 0;
+                margin-bottom: 0;
+                width: auto;
+                height: 100%;
+            }
+
+            // Due to the display: block above, we need to
+            // redefine these
+            &.mobile-only {
+                @include mobile-only;
+            }
+            
+            &.desktop-only {
+                @include desktop-only;
+            }
+        }
+    }
+
+    // This is the default
+    // &.image-callout--left-image {
+    // }
+
+    &.image-callout--right-image {
+        // Added to avoid copy interacting with these images
+        > div:not(.image-callout--image) {
+            @include media(">=small") {
+                position: relative;
+            }
+
+            &:before {
+                @include media(">=small") {
+                    content: "";
+                    position: absolute;
+                    top: -5rem;
+                    left: 0;
+                    width: calc(100% + 5rem);
+                    height: calc(100% + 10rem);
+                    background: linear-gradient(
+                        90deg,
+                        rgba(#fff, 0.75) calc(100% - 10rem),
+                        rgba(#fff, 0.0)
+                    );
+                    z-index: -1;
+                }
+            
+                @include media(">=large") {
+                    top: -10rem;
+                    height: calc(100% + 20rem);
+                }
+            }
+        }
+
+        .image-callout--image {
+            @include media(">=small") {
+                left: auto;
+                right: 0;
+            }
+
+            img {
+                @include media(">=small") {
+                    left: auto;
+                    right: calc(
+                        -1 *
+                        var(--grid-gutter-width)
+                    );
+                }
+            }
+        }
+    }
+}
+
+// When following a hero or a gray background section, remove the top margin
+.hero + section .grid.image-callout:first-child,
+.background--gray + section .grid.image-callout:first-child {
+    margin-top: 0;
+}

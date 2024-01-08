@@ -1,0 +1,60 @@
+// Implementing as mixins as some buttons transition
+// between styles at different breakpoints
+@mixin button--outlined {
+    color: $color-brand-purple;
+    
+    &:before {
+        border: solid 2px $color-green;
+    }
+}
+
+@mixin button--outlined--dark {
+    @include button--outlined;
+
+    &:before {
+        border-color: $color-dark-gray;
+    }
+}
+
+@mixin button--solid {
+    color: #fff;
+
+    &:before {
+        background-color: $color-brand-purple;
+        border-color: $color-brand-purple;
+    }
+    
+    // Used for the submit button on forms; input elements
+    // can't have pseudo classes
+    input {
+        color: #fff;
+    }
+}
+
+.button,
+.button:active,
+.button:hover,
+.button:visited,
+.button input {
+    min-width: 23rem;
+    font-family: $font-sans-condensed;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.button--outlined {
+    @include button--outlined;
+}
+
+.button--outlined--dark {
+    @include button--outlined--dark;
+}
+
+.button--solid,
+.button--solid:hover,
+.button--solid:active,
+.button--solid:visited {
+    @include button--solid;
+}

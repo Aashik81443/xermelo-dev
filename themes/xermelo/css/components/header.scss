@@ -1,0 +1,192 @@
+// Xermelo header
+header {
+    // Element that becomes fixed positioned
+    .header__fixed-container {
+        // Establishes sizing
+        .grid {
+            // Logo
+            .header__site-logo {
+                position: absolute;
+                top: 1rem;
+                left: 0;
+                transform: translate(
+                    0,
+                    calc(
+                        var(--header-compression-progress) *
+                        (
+                            // This shifts the logo down slightly
+                            2px +
+                            (
+                                var(--header-compression) * 0.5
+                            )
+                        )
+                    )
+                );
+                display: block;
+                width: 224px;
+                height: 67px;
+                background-image: url("/themes/xermelo/images/global/xermelo-logo/TRSA_XER_Logo_FullColor_RGB.svg");
+                background-size: contain;
+                // Shifting to the left a bit to accommodate a bit of whitespace in the logo
+                background-position: -3px top;
+                text-indent: -9000em;
+                overflow: hidden;
+                -webkit-tap-highlight-color: transparent;
+
+                @include media(">=small") {
+                    top: 1.5rem;
+                    transform: translate(
+                        0,
+                        calc(
+                            var(--header-compression-progress) *
+                            (
+                                // This shifts the logo down slightly
+                                2px +
+                                (
+                                    var(--header-compression) * 0.5
+                                )
+                            )
+                        )
+                    );
+
+                    // Shrinking this so all the copy will fit at 768px
+                    width: 200px;
+                }
+                
+                @include media(">=medium") {
+                    top: 2rem;
+                    width: 224px;
+                    height: 67px;
+                }
+                
+                @include media(">=large") {
+                    left: grid-size(2, 2);
+                }
+            }
+            
+            // Hamburger
+            .header__hamburger {
+                span {
+                    background-color: $color-brand-purple;
+                }
+            }
+
+            // Top links (desktop only)
+            .header__top-links {
+                right: 0;
+                font-size: 13px;
+                line-height: 3rem;
+                
+                @include media(">=large") {
+                    right: grid-size(1, 1);
+                }
+
+                li {
+                    a {
+                        font-weight: normal;
+                        text-decoration: underline;
+                        color: $color-dark-gray;
+                    }
+                }
+            }
+            
+            // Nav menu
+            > nav {
+                @include media(">=large") {
+                    right: grid-size(1, 1);
+                }
+
+                .header__nav-scroll-container {
+                    > div {
+                        // Individual nav items
+                        > div.header__nav-item {
+                            // Submenu titles & top-level links
+                            span,
+                            > a,
+                            > a:hover,
+                            > a:active,
+                            > a:visited {
+                                font-family: $font-sans;
+                                font-size: 18px;
+                                line-height: 4rem;
+                                font-weight: bold;
+                                text-decoration: none;
+                                color: $color-brand-purple;
+                                
+                                @include media(">=small") {
+                                    font-family: $font-sans-condensed;
+                                    font-size: 19px;
+                                }
+
+                                // Current item / hover indicator
+                                &:before {
+                                    background-color: $color-green;
+                                }
+                            }
+                            
+                            // Submenus
+                            > div {
+                                > ul {
+                                    > li {
+                                        a,
+                                        a:hover,
+                                        a:active,
+                                        a:visited {
+                                            font-family: $font-sans;
+                                            font-size: 18px;
+                                            line-height: 32px;
+                                            font-weight: normal;
+                                            text-decoration: none;
+                                            color: $color-brand-purple;
+
+                                            @include media(">=small") {
+                                                font-family: $font-sans-condensed;
+                                                font-size: 19px;
+                                                font-weight: bold;
+                                            }
+                                        }
+
+                                        a {
+                                            // Current item / hover indicator
+                                            &:before {
+                                                background-color: $color-green;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // CNE callout
+                        .header__cne-callout {
+                            @include mobile-only;
+                            margin: 2rem 0;
+                            padding: 2rem 4rem;
+                            font-size: 14px;
+                            line-height: 2rem;
+                            text-align: center;
+                            background-color: $color-green;
+                            border-radius: 1rem;
+                            
+                            a,
+                            a:hover,
+                            a:active,
+                            a:visited {
+                                font-weight: bold;
+                                color: $color-dark-gray
+                            }
+                        }
+
+                        // "For Healthcare Professionals"
+                        > p {
+                            font-size: 18px;
+                            line-height: 32px;
+                            font-weight: bold;
+                            color: $color-brand-purple;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

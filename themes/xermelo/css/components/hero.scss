@@ -1,0 +1,56 @@
+.hero {
+    background-color: $color-brand-purple;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 50%;
+        height: 100%;
+        background-image: url("/themes/xermelo/images/global/Blueprint-purple.png");
+        background-size: cover;
+        background-position: left top;
+        pointer-events: none;
+    
+        @include media(">=small") {
+            right: auto;
+            left: 50%;
+            width: 50%;
+            background-size: auto 292px;
+            background-position: 70px -68px;
+        }
+    }
+
+    .grid {
+        padding-top: 5rem;
+        padding-bottom: 4rem;
+        
+        @include media(">=small") {
+            padding-top: 6rem;
+            padding-bottom: 5rem;
+        }
+
+        h1 {
+            color: #fff;
+        }
+    }
+
+    // No margin between .hero and the following section
+    & + section {
+        margin-top: 0;
+
+        // ...but the first .grid within it has a top margin that's
+        // larger than the default in-between sections. This is so
+        // it can be overrided by certain initial sections, like those
+        // that have a background image flush with the hero
+        > .grid:first-child {
+            margin-top: 6rem;
+
+            @include media(">=small") {
+                margin-top: 9rem;
+            }
+        }
+    }
+}

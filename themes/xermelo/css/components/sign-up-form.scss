@@ -1,0 +1,43 @@
+// Section containing the sign up form on the "Ask a Nurse" page,
+// which includes introductory copy
+.cne-sign-up {
+    border-top-color: $color-brand-purple;
+    background-color: $color-lighter-gray;
+    overflow: hidden;
+
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    
+    @include media('>small') {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    // initially hide the sign-up form 
+    .wrap--cne-sign-up {
+        display:none;
+        padding-top: 2rem;
+
+        @include media('>small'){  
+            padding-top: 5rem;
+        }
+
+        // The sign up form
+        .form--cne-sign-up {
+            position: relative;
+            background-color: white;
+        }
+    }
+}
+
+// callout to show when sign up form is hidden
+// on "Ask a Nurse" page 
+.right-for-you {
+    display:none;
+    > .grid.image-callout {
+        margin-top: 0;
+        @include media('>small'){  
+            margin-top:0;
+        }
+    }
+}

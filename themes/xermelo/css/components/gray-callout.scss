@@ -1,0 +1,28 @@
+// This is a small gray section within a block, currently
+// only used on the "/how-to-get-xermelo" page. On mobile,
+// the gray background is full bleed
+.gray-callout {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: calc(-1 * var(--grid-gutter-width));
+        display: block;
+        width: calc(100% + (2 * var(--grid-gutter-width)));
+        height: 100%;
+        background-color: $color-lighter-gray;
+        
+        @include media(">=small") {
+            left: 0;
+            width: 100%;
+        }
+    }
+    
+    @include media(">=small") {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}

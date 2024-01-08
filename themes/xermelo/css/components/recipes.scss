@@ -1,0 +1,50 @@
+// Recipe links seen on "/diet-and-nutrition"
+.recipe-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 184px;
+    padding-left: grid-size(2, 2);
+        
+    @include media(">=small") {
+        min-height: 232px;
+        padding-left: grid-size(3, 3);
+    }
+    
+    @include media(">=medium") {
+        padding-left: grid-size(2, 2);
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: grid-size(2, 1);
+        height: 100%;
+        object-fit: cover;
+        
+        @include media(">=small") {
+            width: grid-size(3, 2);
+        }
+        
+        @include media(">=medium") {
+            width: grid-size(2, 1);
+        }
+    }
+
+    .button {
+        min-width: 0;
+    }
+}
+
+// Content of actual recipes
+.recipe {
+    h3 {
+        margin-top: 5rem;
+    }
+
+    h4 {
+        margin-top: 3rem;
+    }
+}

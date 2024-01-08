@@ -1,0 +1,228 @@
+.circle-icon {
+    /*
+        Properties
+    */
+    --circle-icon-width: 9rem;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
+    min-height: var(--circle-icon-width);
+    
+    @include media(">=small") {
+        --circle-icon-width: 10rem;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        display: block;
+        width: var(--circle-icon-width);
+        height: var(--circle-icon-width);
+
+        // The icon images have the green circle burned into them
+        // border-radius: 50%;
+        // background-color: $color-green;
+        background-size: contain;
+    }
+
+    &.circle-icon--align-top {
+        &:before {
+            top: 0;
+            transform: none;
+        }
+    }
+
+    &.circle-icon--fixed-height {
+        height: var(--circle-icon-width);
+    }
+
+    &.circle-icon--above-copy {
+        // Flex messes up text-align and we don't need it here
+        display: block;
+        padding-left: 0;
+        padding-top: calc(var(--circle-icon-width) + 2rem);
+
+        &:before {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+    }
+
+    &.circle-icon-m--above-copy {
+        display: block;
+        padding-left: 0;
+        padding-top: calc(var(--circle-icon-width) + 2rem);
+
+        @include media(">=small") {
+            display: flex;
+            padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
+            padding-top: 0;
+        }
+        
+        &:before {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            @include media(">=small") {
+                top: 50%;
+                left: 0;
+                transform: translate(0, -50%);
+            }
+        }
+    }
+
+    &.circle-icon-d--align-top {
+        @include media(">=small") {
+            &:before {
+                top: 0;
+                transform: none;
+            }
+        }
+    }
+
+    &.circle-icon-d--above-copy {
+        @include media(">=small") {
+            display: block;
+            padding-left: 0;
+            padding-top: calc(var(--circle-icon-width) + 2rem);
+        }
+        
+        &:before {
+            @include media(">=small") {
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+
+    /*
+        Icons
+    */
+    &.circle-icon--3-times {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-3times@2x.png");
+        }
+    }
+
+    &.circle-icon--12-weeks {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-12weeks@2x.png");
+        }
+    }
+
+    &.circle-icon--72-hours {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-72hours.png");
+        }
+    }
+
+    &.circle-icon--approved {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Approved@2x.png");
+        }
+    }
+
+    &.circle-icon--brain {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Brain@2x.png");
+        }
+    }
+
+    &.circle-icon--chocolate {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Chocolate.png");
+        }
+    }
+
+    &.circle-icon--combination {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Combination@2x.png");
+        }
+    }
+
+    &.circle-icon--copay {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Copay.png");
+        }
+    }
+
+    &.circle-icon--dairy {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Dairy.png");
+        }
+    }
+
+    &.circle-icon--depression {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Depression@2x.png");
+        }
+    }
+
+    &.circle-icon--doctor {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Doctor@2x.png");
+        }
+    }
+
+    &.circle-icon--fatigue {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Fatigue@2x.png");
+        }
+    }
+
+    &.circle-icon--gut {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Gut@2x.png");
+        }
+    }
+
+    &.circle-icon--pepper {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Pepper.png");
+        }
+    }
+
+    &.circle-icon--pharmacy {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Pharmacy.png");
+        }
+    }
+
+    &.circle-icon--pillpack {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Pillpack@2x.png");
+        }
+    }
+
+    &.circle-icon--pineapple {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Pineapple.png");
+        }
+    }
+
+    &.circle-icon--quality {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Quality@2x.png");
+        }
+    }
+
+    &.circle-icon--remember {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Remember@2x.png");
+        }
+    }
+
+    &.circle-icon--target {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Target@2x.png");
+        }
+    }
+}

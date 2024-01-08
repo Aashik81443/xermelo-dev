@@ -1,0 +1,9 @@
+#isi-tray {
+    .grid {
+        #isi-tray__button {
+            &:before {
+                color: $color-brand-purple;
+            }
+        }
+    }
+}

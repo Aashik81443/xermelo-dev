@@ -1,0 +1,20 @@
+<footer{{ attributes }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div class="grid grid--centered">
+        {% if content.field_footer_links %}
+            {{ content.field_footer_links }}
+        {% endif %}
+
+        <div class="col-large--10-9">
+            {% if content.field_footer_copyright %}
+                {{ content.field_footer_copyright }}
+            {% endif %}
+            
+            {% if content.field_tersera_logo %}
+                {{ content.field_tersera_logo }}
+            {% endif %}
+        </div>
+    </div>
+</footer>

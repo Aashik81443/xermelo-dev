@@ -1,0 +1,10 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      '//fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap': { type: external, minified: true }
+      css/styles.min.css: {}
+  js:
+    js/main.min.js: {}
+  dependencies:
+    - core/drupal

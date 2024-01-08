@@ -1,0 +1,26 @@
+.isi {
+    // Smaller here (but not a h5) and a different color
+    h4 {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: bold;
+        color: $color-dark-gray;
+    }
+
+    ul {
+        margin-bottom: 2rem;
+    }
+
+    // Not sure if this font size change is intentional
+    .isi__collapsed-content {
+        padding-bottom: 2rem;
+        font-size: 14px;
+        line-height: 16px;
+    
+        @include media(">=small") {
+            padding-bottom: 3rem;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}

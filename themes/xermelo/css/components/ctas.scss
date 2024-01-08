@@ -1,0 +1,21 @@
+.ctas,
+.eop-callouts {
+    .grid {
+        > div {
+            border-bottom-color: $color-green;
+
+            h5 {
+                &:after {
+                    background-color: $color-green;
+                }
+            }
+
+            p {
+                font-family: $font-sans-condensed;
+                font-size: 3rem;
+                line-height: 4rem;
+                color: $color-brand-purple;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+// Xermelo CNE banner
+#banner--cne {
+    background-color: $color-green;
+    
+    > div {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    
+        body > & {
+            @include desktop-only;
+        }
+    
+        > div {
+            > div {
+                @include media(">=small") {
+                    text-align: center;
+                }
+            }
+        }
+    
+        a,
+        a:hover,
+        a:active,
+        a:visited {
+            font-weight: bold;
+            color: $color-dark-gray;
+            white-space: nowrap;
+        }
+    }
+}

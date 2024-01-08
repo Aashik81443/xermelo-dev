@@ -1,0 +1,92 @@
+.homepage-hero {
+    padding-top: calc(#{$mobile-min-width} * (434 / 754));
+    background-image: url("/themes/xermelo/images/pages/home/XER-Patient-HERO-SM.png");
+    background-size: 100% auto;
+    background-position: left top;
+
+    @media(min-width: #{$mobile-min-width}) {
+        padding-top: calc(100vw * (434 / 754));
+    }
+    
+    @include media(">=small") {
+        margin-top: calc(-1 * var(--header-height));
+        padding-top: 0;
+        background-image: url("/themes/xermelo/images/pages/home/XER-Patient-HERO-LG.png");
+        background-size: cover;
+        background-position: 69% center;
+    }
+    
+    @include media(">=large") {
+        background-position: right center;
+    }
+    
+    @include media(">=x-large") {
+        // The hero area is too tall to fix this image at its native
+        // 1344 width, so we're filling the vertical space and allowing
+        // it to extend past normal grid boundaries. We could rearrange
+        // this to crop it on the left & right, but I'm guessing that
+        // creative will want to do something with the white space
+        // background-size: map-get($breakpoints, 'x-large') auto;
+        
+        // EDIT: I'm just adding purple to the left for now
+        // background-image:
+        //     url("/themes/xermelo/images/pages/home/XER-Patient-HERO-LG.png"),
+        //     linear-gradient(90deg, $color-brand-purple, $color-brand-purple 50%, transparent 50%, transparent);
+        // background-size: auto 100%, auto;
+        // background-position: center, left top;
+
+        // EDIT 2: That looks awful; just setting a purple background
+        background-size: auto 100%;
+        background-position: center;
+        background-color: $color-brand-purple;
+    }
+
+    .grid {
+        padding-top: 4rem;
+
+        @include media(">=small") {
+            padding-top: var(--header-height);
+            color: #fff;
+        }
+
+        > div {
+            @include media(">=small") {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            h1 {
+                @include media(">=small") {
+                    color: #fff;
+                    text-shadow: 0 2px 8px rgba(#000, 0.5);
+                }
+            }
+
+            .button {
+                @include media(">=small") {
+                    @include button--outlined;
+                
+                    &:before {
+                        background-color: #fff;
+                    }
+                }
+            }
+
+            p {
+                & + .button {
+                    @include media(">=small") {
+                        margin-top: 3rem;
+                    }
+                }
+
+                &.footnote {
+                    margin-top: 2rem;
+
+                    @include media(">=small") {
+                        margin-top: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}

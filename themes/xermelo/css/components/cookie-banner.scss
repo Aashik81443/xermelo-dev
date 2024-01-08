@@ -1,0 +1,20 @@
+// Xermelo cookie banner
+#banner--cookie {
+    background-color: $color-orange;
+
+    a,
+    a:hover,
+    a:active,
+    a:visited {
+        font-weight: bold;
+        color: $color-dark-gray;
+    }
+
+    .button {
+        padding: 1rem 2rem;
+        font-family: $font-sans;
+        font-size: 2rem;
+        line-height: 3rem;
+        color: $color-dark-gray;
+    }
+}

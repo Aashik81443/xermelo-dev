@@ -1,0 +1,219 @@
+/*
+    /what-is-carcinoid-syndrome
+*/
+
+.what-is-carcinoid-syndrome--image-sidebar {
+    img {
+        display: block;
+        width: 85%;
+        margin: 2rem auto;
+        
+        @include media(">=small") {
+            width: auto;
+            margin: 0 0 2rem;
+        }
+    }
+}
+
+
+.what-is-carcinoid-syndrome--eruption {
+    img {
+        display: block;
+        margin: 0 auto 2rem;
+        max-width: 171px;
+        
+        @include media(">=small") {
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+}
+
+/*
+    /how-xermelo-helps
+*/
+
+.how-xermelo-helps--image-sidebar-1 {
+    img {
+        display: block;
+        width: 85%;
+        margin: 2rem auto 0;
+        
+        @include media(">=small") {
+            width: auto;
+            margin: 0;
+        }
+    }
+}
+
+.how-xermelo-helps--image-sidebar-2 {
+    img {
+        display: block;
+        width: 75%;
+        margin: 2rem auto 0;
+        
+        @include media(">=small") {
+            width: auto;
+            margin: 0;
+        }
+    }
+}
+
+/*
+    /starting-xermelo
+*/
+
+.starting-xermelo--three-times-daily {
+    img.mobile-only {
+        display: block;
+        margin: 0 auto;
+        max-width: 328px;
+        
+        @include media(">=small") {
+            display: none;
+        }
+    }
+}
+
+.starting-xermelo--packaging {
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 283px;
+        
+        @include media(">=small") {
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+}
+
+/*
+    /ask-a-nurse
+*/
+
+.ask-a-nurse--image-banner {
+    .disclaimer {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    // Main copy
+    > .grid.image-callout {
+        @include media(">=small") {
+            padding-bottom: 3rem;
+        }
+        
+        &.image-callout--right-image {
+            // Added to avoid copy interacting with these images
+            > div:not(.image-callout--image) {
+                &:before {
+                    @include media(">=small") {
+                        height: calc(100% + 8rem);
+                    }
+                    
+                    @include media(">=large") {
+                        height: calc(100% + 13rem);
+                    }
+                }
+            }
+        }
+    }
+
+    // Footnote
+    > div:nth-of-type(2) {
+        margin-top: 3rem;
+        
+        @include media(">=small") {
+            margin-top: 4rem;
+        }
+    }
+}
+
+.cne-sign-up {
+    // Comps have no margin between the initial form and the ISI, which is unique
+    // to this page
+    margin-bottom: -5rem;
+    
+    @include media(">=small") {
+        margin-bottom: -6rem;
+    }
+
+    &.cne-sign-up--taking-no,
+    &.cne-sign-up--taking-yes {
+        margin-bottom: 0;
+    }
+}
+
+#sign-up .form--cne-sign-up {
+    // Dropdown error message is split for one of them (X on right, copy underneath)
+    .form__error--split {
+        @include media(">=small") {
+            margin-top: 1rem;
+            padding-left: 0;
+            &::before, &::after {
+                top: unset;
+                left: unset;
+                bottom: 3.4rem;
+                right: -5.5rem;
+            }
+        }
+    }
+}
+
+/*
+    /how-to-get-xermelo
+*/
+
+.how-to-get-xermelo--copay {
+    text-align: center;
+    
+    @include media(">=small") {
+        text-align: left;
+    }
+
+    img {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 168px;
+        
+        @include media(">=small") {
+            width: 209px;
+        }
+    }
+}
+
+/*
+    Utility pages
+*/
+
+.grid.utility-page-intro {
+    margin-bottom: 9rem;
+
+    p:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    p.buttons {
+        margin-top: 4rem;
+    }
+}
+
+/*
+    Sitemap
+*/
+
+.sitemap {
+    margin-bottom: 9rem;
+
+    ul {
+        &:not(:last-of-type) {
+            margin-bottom: 5rem;
+        }
+    
+        ul {
+            margin-top: 1rem;
+        }
+    }
+}
