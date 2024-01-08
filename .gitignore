@@ -2,4 +2,3 @@ node_modules
 sites/default
 .DS_Store*
 *.DS_Store
-themes
