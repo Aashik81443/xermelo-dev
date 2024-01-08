@@ -1,0 +1,62 @@
+.gradient-callout {
+    padding: 2rem;
+    background-image: linear-gradient(rgba($color-green, 0.5) 0%, rgba(205,220,40,0) 100%);
+
+    &.gradient-callout--horizontal {
+        padding: 1.5rem 2rem;
+        background-image: linear-gradient(90deg, rgba(205,220,40,0) 0%, rgba($color-green, 0.5) 100%);
+    }
+    
+    &.gradient-callout--inline-block {
+        display: inline-block;
+    }
+    
+    &.gradient-callout--inline-block-d {
+        @include media(">=small") {
+            display: inline-block;
+        }
+    }
+
+    h2 {
+        font-size: 48px;
+        line-height: 56px;
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    h3 {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: normal;
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    h4 {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: bold;
+        color: $color-dark-gray;
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    strong {
+        color: $color-brand-purple;
+    }
+
+    ul {
+        font-weight: bold;
+        
+        @include media(">=small") {
+            display: flex;
+            gap: var(--grid-column-spacing);
+        }
+    }
+}

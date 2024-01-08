@@ -1,0 +1,153 @@
+// Note usage here is different compared to the patient side
+// of the site due to layout differences
+.circle-icon {
+    /*
+        Properties
+    */
+    --circle-icon-width: 9rem;
+    --circle-icon-background-image: none;
+
+    @include media(">=small") {
+        --circle-icon-width: 10rem;
+        
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
+        min-height: var(--circle-icon-width);
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            display: block;
+            width: var(--circle-icon-width);
+            height: var(--circle-icon-width);
+            background-image: var(--circle-icon-background-image);
+            background-size: contain;
+        }
+    }
+
+    .circle-icon__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
+        min-height: var(--circle-icon-width);
+        
+        @include media(">=small") {
+            display: initial;
+            padding-left: 0;
+            min-height: 0;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            display: block;
+            width: var(--circle-icon-width);
+            height: var(--circle-icon-width);
+            background-image: var(--circle-icon-background-image);
+            background-size: contain;
+            
+            @include media(">=small") {
+                display: none;
+            }
+        }
+    }
+
+    &.circle-icon--small {
+        @include media(">=small") {
+            --circle-icon-width: 7rem;
+        }
+    }
+
+    &.circle-icon--align-top {
+        @include media(">=small") {
+            &:before {
+                top: 0;
+                transform: none;
+            }
+        }
+
+        .circle-icon__container {
+            &:before {
+                top: 0;
+                transform: none;
+            }
+        }
+    }
+
+    &.circle-icon-m--above-copy-centered {
+        .circle-icon__container {
+            display: block;
+            padding-left: 0;
+            padding-top: calc(var(--circle-icon-width) + 2rem);
+            
+            @include media(">=small") {
+                padding-top: 0;
+            }
+            
+            &:before {
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+
+    &.circle-icon-d--above-copy {
+        @include media(">=small") {
+            display: block;
+            padding-left: 0;
+            padding-top: calc(var(--circle-icon-width) + 2rem);
+        }
+
+        &:before {
+            @include media(">=small") {
+                top: 0;
+                transform: none;
+            }
+        }
+    }
+
+    /*
+        Icons
+    */
+    &.circle-icon--clipboard {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Clipboard.png");
+    }
+    
+    &.circle-icon--computer {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Computer.png");
+    }
+    
+    &.circle-icon--copay {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Copay.png");
+    }
+    
+    &.circle-icon--pap {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-PAP.png");
+    }
+    
+    &.circle-icon--reimbursement {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Reimbursement.png");
+    }
+    
+    &.circle-icon--brochure {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Brochure.png");
+    }
+    
+    &.circle-icon--checklist {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Checklist.png");
+    }
+    
+    &.circle-icon--letter {
+        --circle-icon-background-image: url("/themes/xermelohcp/images/components/circle-icons/XER-HCP-Icon-Letter.png");
+    }
+}

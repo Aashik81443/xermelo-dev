@@ -1,0 +1,16 @@
+/*
+    Properties
+*/
+:root {
+    // Input border colors
+    --input-border-color: #{$color-dark-gray};
+    --input-border-color-focus: #{$color-dark-gray};
+}
+
+.form__field-group {
+    label {
+        font-size: 14px;
+        line-height: 2rem;
+        font-weight: 600;
+    }
+}

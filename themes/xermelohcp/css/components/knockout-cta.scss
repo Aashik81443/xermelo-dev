@@ -1,0 +1,35 @@
+.knockout-cta {
+    padding: 3.5rem 3rem 4rem;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: bold;
+    color: #fff;
+    background-color: $color-brand-purple;
+    
+    @include media(">=small") {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 3rem 37rem 3rem 8rem;
+        min-height: 14rem;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    > *:nth-last-child(2) {
+        margin-bottom: 3rem;
+        
+        @include media(">=small") {
+            margin-bottom: 0;
+        }
+    }
+
+    .button {
+        @include media(">=small") {
+            position: absolute;
+            top: 50%;
+            right: 8rem;
+            transform: translate(0, -50%);
+        }
+    }
+}

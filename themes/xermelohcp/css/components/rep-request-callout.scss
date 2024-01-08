@@ -1,0 +1,20 @@
+.rep-request-callout {
+    // When this is the last item on the page before the ISI, remove the bottom margin
+    &:last-child {
+        margin-bottom: -5rem;
+        
+        @include media(">=small") {
+            margin-bottom: -6rem;
+        }
+    }
+
+    h3 {
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    p {
+        margin-bottom: 2rem;
+    }
+}

@@ -1,0 +1,66 @@
+// Section containing the rep request form,
+// which includes introductory copy
+.request-a-representative {
+    // The form
+    .form--request-a-representative {
+        position: relative;
+
+        // Implementing the background as a pseudo element
+        // so it can break out of the layout
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: calc(-1 * var(--grid-gutter-width));
+            display: block;
+            width: calc(
+                100% +
+                (
+                    2 *
+                    var(--grid-gutter-width)
+                )
+            );
+            height: 100%;
+            background-color: $color-lighter-gray;
+            pointer-events: none;
+            z-index: -1;
+            
+            @include media(">=small") {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        .form--request-a-representative__npi,
+        .form--request-a-representative__profile {
+            font-size: 14px;
+            line-height: 2rem;
+        }
+
+        .form--request-a-representative__npi {
+            .npi-lookup-intro {
+                margin-top: 2rem;
+
+                .npi-lookup-modal--trigger {
+                    cursor: pointer;
+                    font-weight: 600;
+                }
+
+                .npi-lookup-intro__description {
+                    margin: 2rem 0;
+                    color: $color-mid-gray;
+                }
+
+                label {
+                    margin: 0;
+                }
+            }
+        }
+
+        .form--request-a-representative__submit {
+            .buttons {
+                margin-bottom: 4rem;
+            }
+        }
+    }
+}

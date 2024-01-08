@@ -1,0 +1,23 @@
+{% if content.field_hcp_rep_request_class.0 is not empty %}
+    {%
+        set classes = [
+            "rep-request-callout",
+            (render_var(content.field_hcp_rep_request_class.0))
+        ]
+    %}
+{% else %}
+    {%
+        set classes = [
+            "rep-request-callout"
+        ]
+    %}
+{% endif %}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% if content.field_hcp_rep_request_body %}
+        {{ content.field_hcp_rep_request_body }}
+    {% endif %}
+</section>

@@ -1,0 +1,24 @@
+#isi-tray {
+    .grid {
+        #isi-tray__button {
+            &:before {
+                color: $color-brand-purple;
+            }
+        }
+
+        .isi {
+            // Hide anything more than a single line in the last bullet
+            // within the collapsed content (this is unique to HCP)
+            .isi__collapsed-content {
+                > ul {
+                    margin-bottom: 0;
+
+                    > li:last-child {
+                        max-height: 24px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

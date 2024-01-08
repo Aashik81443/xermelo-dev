@@ -1,0 +1,136 @@
+section .grid.image-callout {
+    // This prevents horizontal scrolling, which the
+    // width setting on the inner img causes
+    // overflow: hidden;
+    padding-top: 0;
+
+    @include media(">=small") {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        z-index: 1;
+    }
+    
+    @include media(">=large") {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    .image-callout--image {
+        @include media(">=small") {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: -1;
+        }
+
+        img {
+            position: relative;
+            left: calc(
+                -1 *
+                var(--grid-gutter-width)
+            );
+            width: calc(
+                100% +
+                (
+                    2 *
+                    var(--grid-gutter-width)
+                )
+            );
+            max-width: none;
+
+            // This avoids whitespace around these images
+            display: block;
+            margin-bottom: 3rem;
+            
+            @include media(">=small") {
+                position: absolute;
+                top: 0;
+                left: calc(
+                    -1 *
+                    var(--grid-gutter-width)
+                );
+                margin-bottom: 0;
+
+                object-fit: cover;
+                object-position: center top;
+                width: 100%;
+                width: calc(
+                    100% +
+                    var(--grid-gutter-width)
+                );
+                height: 100%;
+            }
+
+            // Due to the display: block above, we need to
+            // redefine these
+            &.mobile-only {
+                @include mobile-only;
+            }
+            
+            &.desktop-only {
+                @include desktop-only;
+            }
+        }
+    }
+
+    // This is the default
+    // &.image-callout--left-image {
+    // }
+
+    &.image-callout--right-image {
+        .image-callout--image {
+            @include media(">=small") {
+                left: auto;
+                right: 0;
+            }
+
+            img {
+                @include media(">=small") {
+                    left: auto;
+                    right: calc(
+                        -1 *
+                        var(--grid-gutter-width)
+                    );
+                }
+            }
+        }
+
+        &.image-callout-d--contain {
+            .image-callout--image {
+                img {
+                    @include media(">=small") {
+                        object-fit: contain;
+                        object-position: right top;
+                    }
+                }
+            }
+        }
+
+        &.image-callout-large--contain {
+            .image-callout--image {
+                img {
+                    @include media(">=large") {
+                        object-fit: contain;
+                        object-position: right top;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// When following a hero or a gray background section, remove the top margin
+.hero + section .grid.image-callout:first-child,
+.background--gray + section .grid.image-callout:first-child {
+    margin-top: 0;
+}
+
+// On HCP, there isn't a bit of gray margin above the image on mobile
+section.background--gray .grid.image-callout {
+    padding-top: 0;
+    
+    @include media(">=small") {
+        padding-top: 6rem;
+    }
+}

@@ -1,0 +1,18 @@
+// Modal template
+.modal.npi-lookup-modal {
+    .npi-results {
+        table {
+            th {
+                color: $color-brand-purple;
+            }
+            
+            td {
+                &.col-cta button {
+                    color: $color-brand-purple;
+                    font-weight: bold;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

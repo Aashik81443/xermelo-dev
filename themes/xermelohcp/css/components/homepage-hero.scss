@@ -1,0 +1,93 @@
+.homepage-hero {
+    @include media(">=small") {
+        display: flex;
+        padding-top: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: url("/themes/xermelohcp/images/pages/home/XER-Hero-Design-LG.png");
+            background-size: cover;
+            background-position: right center;
+        }
+    }
+
+    > .grid {
+        padding-top: 10px;
+        min-height: calc(100vw * (738 / 2690));
+
+        @include media(">=small") {
+            padding-top: 26px;
+            padding-bottom: 5rem;
+        }
+
+        > div {
+            @include media(">=small") {
+                display: flex;
+                flex-direction: column;
+            }
+
+            // Introductory copy
+            .hero__intro {
+                font-size: 15px;
+                line-height: 18px;
+                margin-bottom: 12px;
+                text-align: center;
+                
+                @include media(">=small") {
+                    margin-bottom: 20px;
+                    text-align: left;
+                }
+            }
+
+            // Main copy
+            .hero__body {
+                position: relative;
+                padding-top: calc((#{$mobile-min-width} * (368 / 750)) + 4rem);
+                
+                @media(min-width: #{$mobile-min-width}) {
+                    padding-top: calc((100vw * (368 / 750)) + 4rem);
+                }
+
+                @include media(">=small") {
+                    flex-grow: 1;
+                    display: flex;
+                    align-items: center;
+                    padding-top: 0;
+                }
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: calc(-1 * var(--grid-gutter-width));
+                    width: $mobile-min-width;
+                    height: calc(#{$mobile-min-width} * (368 / 750));
+                    background-image: url("/themes/xermelohcp/images/pages/home/XER-Hero-Design-SM.png");
+                    background-size: cover;
+                    
+                    @media(min-width: #{$mobile-min-width}) {
+                        width: 100vw;
+                        height: calc(100vw * (368 / 750));
+                    }
+                    
+                    @include media(">=small") {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.homepage-hero + section {
+    > .grid {
+        // Slightly less margin between sections in this specific case
+        margin-top: 6rem;
+    }
+}

@@ -1,0 +1,9 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/styles.min.css: {}
+  js:
+    js/main.min.js: {}
+  dependencies:
+    - core/drupal

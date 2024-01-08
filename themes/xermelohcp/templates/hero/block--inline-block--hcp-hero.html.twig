@@ -1,0 +1,31 @@
+{% if content.field_hcp_hero_class.0 is not empty %}
+    {%
+        set classes = [
+            "hero",
+            (render_var(content.field_hcp_hero_class.0))
+        ]
+    %}
+{% else %}
+    {%
+        set classes = [
+            "hero"
+        ]
+    %}
+{% endif %}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    
+    <div class="grid">
+        <div class="col-large--8-7">
+            {% if content.field_hcp_hero_intro %}
+                {{ content.field_hcp_hero_intro }}
+            {% endif %}
+            
+            {% if content.field_hcp_hero_body %}
+                {{ content.field_hcp_hero_body }}
+            {% endif %}
+        </div>
+    </div>
+</section>

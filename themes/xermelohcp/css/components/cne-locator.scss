@@ -1,0 +1,367 @@
+.cne-locator {
+    margin-bottom: 6rem;
+
+    .cne-locator__intro {
+        text-align: center;
+
+        @include media(">=small") {
+            text-align: left;
+        }
+
+        > .grid {
+            margin-top: 5rem;
+
+            @include media(">=small") {
+                margin-top: 6rem;
+            }
+        }
+
+        img {
+            width: 100%;
+            max-width: 250px;
+            display: block;
+            margin: 0 auto 2rem;
+
+            @include media(">=small") {
+                width: calc(100% - 3rem);
+                max-width: 200px;
+                margin: 0;
+            }
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 24px;
+            color: $color-brand-purple;
+
+            @include media(">=small") {
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+
+        .cne-locator__intro__open-close-button {
+            @include media(">=small") {
+                min-width: 0;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        .cne-locator__intro__close-prompt {
+            display: none;
+        }
+    }
+
+    .cne-locator__interface {
+        height: 0;
+        visibility: hidden;
+        pointer-events: none;
+        overflow: hidden;
+
+        > .grid {
+            margin-top: 5rem;
+        }
+
+        .cne-locator__controls {
+            text-align: center;
+            padding-bottom: 1rem;
+
+            @include media(">=small") {
+                padding-top: 1rem;
+                padding-bottom: 6rem;
+            }
+
+            h5 {
+                font-size: 14px;
+                line-height: 16px;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: 13px;
+                line-height: 16px;
+                margin-bottom: 2rem;
+            }
+
+            .cne-locator__legend {
+                display: flex;
+                justify-content: center;
+                flex-wrap: nowrap;
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+
+                > li {
+                    position: relative;
+                    display: block;
+                    width: 3rem;
+                    height: 3rem;
+                    margin: 0;
+                    padding: 0;
+                    cursor: pointer;
+
+                    &:before,
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        display: block;
+                        pointer-events: none;
+                    }
+
+                    // Hover / selected border
+                    &:before {
+                        transform: translate(-50%, -50%) scale(calc(3 / 3.5));
+                        width: calc(100% + 0.5rem);
+                        height: calc(100% + 0.5rem);
+                        background-color: $color-green;
+                        opacity: 0;
+                        transition:
+                            transform 0.5s $ease-out-quad,
+                            opacity 0.5s $ease-out-quad;
+                    }
+
+                    // Background color or image, dictated by "data-region" below
+                    &:after {
+                        width: 100%;
+                        height: 100%;
+                        background-image: url("/themes/xermelohcp/images/components/cne-locator/cne-legend.png");
+                        background-size: cover;
+                    }
+
+                    &:hover,
+                    &.cne-locator--selected {
+                        &:before {
+                            transform: translate(-50%, -50%) scale(1);
+                            opacity: 1;
+                            transition:
+                                transform 0s $ease-out-quad,
+                                opacity 0s $ease-out-quad;
+                        }
+                    }
+
+                    &.cne-locator--selected {
+                        cursor: default;
+                    }
+
+                    &[data-region="west"] {
+                        &:after {
+                        }
+                    }
+
+                    &[data-region="west"][data-subregion="2"] {
+                        &:after {
+                            background-position: -3rem 0;
+                        }
+                    }
+
+                    &[data-region="central-southwest"] {
+                        &:after {
+                            background-position: -6rem 0;
+                        }
+                    }
+
+                    &[data-region="central-southwest"][data-subregion="2"] {
+                        &:after {
+                            background-position: -9rem 0;
+                        }
+                    }
+
+                    &[data-region="midwest"] {
+                        &:after {
+                            background-position: -12rem 0;
+                        }
+                    }
+
+                    &[data-region="central-southeast"] {
+                        &:after {
+                            background-position: -15rem 0;
+                        }
+                    }
+
+                    &[data-region="central-southeast"][data-subregion="2"] {
+                        &:after {
+                            background-position: -18rem 0;
+                        }
+                    }
+
+                    &[data-region="northeast"] {
+                        &:after {
+                            background-position: -21rem 0;
+                        }
+                    }
+
+                    &[data-region="northeast"][data-subregion="2"] {
+                        &:after {
+                            background-position: -24rem 0;
+                        }
+                    }
+
+                    &[data-region="new-england"] {
+                        &:after {
+                            background-position: -27rem 0;
+                        }
+                    }
+
+                    &[data-region="new-england"][data-subregion="2"] {
+                        &:after {
+                            background-position: -30rem 0;
+                        }
+                    }
+                }
+            }
+
+            .cne-locator__map {
+                position: relative;
+
+                // Note: turning off transitions since the crossfade
+                // strobes a bit - this could be nice if we broke out
+                // the gray map from the individual color blocks, but
+                // not sure how much time we'd want to spend on this
+                // at the moment
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    pointer-events: none;
+                    // transition: opacity 0.25s $ease-out-quad;
+
+                    &.cne-locator--hidden {
+                        opacity: 0;
+                        // transition: opacity 0.25s $ease-out-quad;
+                    }
+
+                    &[data-region] {
+                        opacity: 0.001;
+                        // transition: opacity 0.25s $ease-out-quad;
+
+                        &.cne-locator--selected {
+                            opacity: 1;
+                            // transition: opacity 0.25s $ease-out-quad;
+                        }
+                    }
+                }
+
+                svg {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+
+                    polygon,
+                    path {
+                        fill: transparent;
+                        cursor: pointer;
+
+                        &.cne-locator--selected {
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+        }
+
+        .cne-locator__results {
+            // Adding some padding here so that tall results
+            // (e.g., on tablet) still have space before the
+            // following section on the page
+            padding-bottom: 3rem;
+
+            div[data-region] {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: none;
+                width: 100%;
+
+                &.cne-locator--selected {
+                    display: block;
+                }
+
+                .cne-locator__result_disclaimer {
+                    // font-size: 50px;
+                    // color: red;
+                    font-size: 12px;
+                    line-height: 16px;
+                    font-weight: bold;
+                    margin-top: 2.5rem;
+                 }
+
+                > div {
+                    padding: 2rem;
+                    background-color: $color-lighter-gray;
+
+                    @include media(">=small") {
+                        padding: 2.5rem;
+                    }
+
+                    &:not(:last-of-type) {
+                        margin-bottom: 2rem;
+                    }
+
+                    .cne-locator__result__title {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 2rem;
+
+                        // CNE's photo
+                        > img {
+                            display: block;
+                            width: 96px;
+                            background-color: #000;
+                            margin-bottom: 2rem;
+                        }
+
+                        > div {
+                            position: relative;
+                            top: -0.25rem;
+                            margin-bottom: 1.75rem;
+
+                            @include media(">=small") {
+                                top: -0.75rem;
+                                margin-bottom: 1.25rem;
+                            }
+
+                            h3 {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+
+                    .cne-locator__result__details {
+                        p {
+                            font-size: 14px;
+                            line-height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Opened state
+    &.cne-locator--open,
+    &.cne-locator--closing {
+        .cne-locator__interface {
+            height: auto;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+
+    &.cne-locator--open {
+        .cne-locator__intro {
+            .cne-locator__intro__open-prompt {
+                display: none;
+            }
+
+            .cne-locator__intro__close-prompt {
+                display: inline;
+            }
+        }
+    }
+}

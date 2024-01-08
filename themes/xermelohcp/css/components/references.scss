@@ -1,0 +1,36 @@
+.references {
+    .grid {
+        @include media(">=small") {
+            justify-content: center;
+        }
+
+        > div {
+            @include media(">=small") {
+                width: grid-size(10, 9);
+            }
+
+            @include media(">=large") {
+                width: grid-size(8, 7);
+            }
+
+            h4 {
+                font-size: 16px;
+                line-height: 16px;
+                font-weight: bold;
+
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
+            }
+            
+            ol {
+                font-size: 14px;
+                line-height: 18px;
+
+                li:not(:last-of-type) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+}

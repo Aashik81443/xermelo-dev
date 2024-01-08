@@ -1,0 +1,137 @@
+.hero {
+    --icon-display: none;
+    --icon-size: 0px;
+    --icon-image: none;
+
+    text-align: center;
+    
+    @include media(">=small") {
+        display: flex;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(208,198,223,0) 0.01%, #D0C6DF 100%);
+        pointer-events: none;
+    }
+
+    > .grid {
+        padding-top: 10px;
+        padding-bottom: 4rem;
+
+        @include media(">=small") {
+            padding-top: 26px;
+            padding-bottom: 5rem;
+        }
+
+        // For icon positioning on desktop
+        > div {
+            @include media(">=small") {
+                position: relative;
+            }
+        }
+    }
+
+    // Introductory copy
+    .hero__intro {
+        font-size: 15px;
+        line-height: 18px;
+        margin-bottom: 20px;
+        
+        @include media(">=small") {
+            padding: 0 grid-size(0.5, 0);
+        }
+    }
+
+    // Main copy
+    .hero__body {
+        position: relative;
+        
+        @include media(">=small") {
+            position: initial;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: var(--icon-display);
+            padding-top: 100%;
+            width: var(--icon-size);
+            background-image: var(--icon-image);
+            background-size: contain;
+            background-position: right top;
+            
+            @include media(">=large") {
+                right: grid-size(-1, -1);
+            }
+        }
+    }
+
+    &.hero--icon_about-csd {
+        --icon-display: block;
+        --icon-size: 156px;
+        --icon-image: url("/themes/xermelohcp/images/pages/about-csd/hero-icon.png");
+
+        @include media(">=small") {
+            --icon-size: 179px;
+        }
+    }
+
+    &.hero--icon_about-xermelo {
+        --icon-display: block;
+        --icon-size: 141px;
+        --icon-image: url("/themes/xermelohcp/images/pages/about-xermelo/hero-icon.png");
+
+        @include media(">=small") {
+            --icon-size: 150px;
+        }
+    }
+
+    &.hero--icon_patient-support {
+        --icon-display: block;
+        --icon-size: 135px;
+        --icon-image: url("/themes/xermelohcp/images/pages/patient-support/hero-icon.png");
+
+        @include media(">=small") {
+            --icon-size: 159px;
+        }
+    }
+
+    &.hero--icon_resources {
+        --icon-display: block;
+        --icon-size: 135px;
+        --icon-image: url("/themes/xermelohcp/images/pages/resources/hero-icon.png");
+
+        @include media(">=small") {
+            --icon-size: 135px;
+        }
+    }
+
+    &.hero--icon_request-a-representative {
+        --icon-display: block;
+        --icon-size: 100px;
+        --icon-image: url("/themes/xermelohcp/images/pages/request-a-representative/hero-icon.png");
+
+        @include media(">=small") {
+            --icon-size: 131px;
+        }
+    }
+
+    &.hero--icon_request-a-representative-thank-you {
+        --icon-display: block;
+        --icon-size: 96px;
+        --icon-image: url("/themes/xermelohcp/images/pages/request-a-representative/thank-you/hero-icon.png");
+
+        @include media(">=small") {
+            --icon-size: 141px;
+        }
+    }
+}

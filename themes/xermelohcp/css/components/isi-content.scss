@@ -1,0 +1,26 @@
+.isi {
+    h2 {
+        // This is to accommodate the chevron in the tray
+        margin-right: 4rem;
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    // Smaller here (but not a h5) and a different color
+    h4 {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: bold;
+        color: $color-dark-gray;
+    }
+
+    ul {
+        margin-bottom: 2rem;
+
+        > li {
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}

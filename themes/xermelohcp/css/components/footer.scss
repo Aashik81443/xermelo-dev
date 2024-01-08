@@ -1,0 +1,19 @@
+footer {
+    font-size: 14px;
+    line-height: 24px;
+
+    .grid {
+        ul.footer--links {
+            border-color: #979797;
+
+            li {
+                a,
+                a:hover,
+                a:active,
+                a:visited {
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}

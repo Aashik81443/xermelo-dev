@@ -1,0 +1,280 @@
+// Xermelo HCP base styles
+main {
+    section {
+        // Slightly larger space between sections in HCP
+        & + section {
+            > .grid {
+                @include media(">=small") {
+                    margin-top: 6rem;
+                }
+
+                // Added for short pages (e.g., the rep request thank you page)
+                &.min-height-60px {
+                    min-height: 60px;
+                }
+            }
+        }
+
+        // Additional stock section backgrounds would be defined here
+        &.background--gray {
+            background-color: $color-lighter-gray;
+    
+            .grid {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+    
+                @include media(">=small") {
+                    padding-top: 6rem;
+                    padding-bottom: 6rem;
+                }
+    
+                .grid {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // Smaller (or no?) margin between .hero and the following section
+    section.hero + section {
+        > .grid:first-child {
+            margin-top: 4rem;
+            
+            @include media(">=small") {
+                margin-top: 2rem;
+            }
+        }
+    }
+    
+    // When gray background sections follow a .hero section,
+    // remove the top margin
+    section.hero + section.background--gray {
+        > .grid:first-child {
+            margin-top: 0;
+        }
+    }
+    
+    // Footnote that appears between EOP callouts and references
+    section.eop-callouts + section.eop-footnote {
+        > .grid {
+            margin-top: 5rem;
+    
+            @include media(">=small") {
+                margin-top: 5rem;
+            }
+        }
+    }
+    
+    section.eop-footnote + section.references {
+        > .grid {
+            margin-top: 4rem;
+    
+            @include media(">=small") {
+                margin-top: 4rem;
+            }
+        }
+    }
+}
+
+// Header sizes; design isn't consistent, so we're
+// including expicit classes for overrides in the
+// HTML
+.h1-m {
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.h1-d {
+    @include media(">=small") {
+        font-size: 48px;
+        line-height: 56px;
+    }
+}
+
+.h2-m {
+    font-size: 30px;
+    line-height: 34px;
+}
+
+.h2-d {
+    @include media(">=small") {
+        font-size: 36px;
+        line-height: 42px;
+    }
+}
+
+.h3-m {
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+.h3-d {
+    @include media(">=small") {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+.h4-m {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+}
+
+.h4-d {
+    @include media(">=small") {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: normal;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: $color-brand-purple;
+}
+
+// "H1 (large)" in the style guide
+h1 {
+    @extend .h1-m, .h1-d;
+
+    &.border--green {
+        position: relative;
+        margin-bottom: 5rem;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -2.5rem;
+            left: 0;
+            display: block;
+            width: 10rem;
+            height: 0.5rem;
+            background-color: $color-green;
+        }
+    }
+}
+
+h2 {
+    @extend .h2-m, .h2-d;
+}
+
+h3 {
+    @extend .h3-m, .h3-d;
+    
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+h4 {
+    @extend .h4-m, .h4-d;
+
+    &:not(:first-child) {
+        margin-top: 2rem;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+sub,
+sup {
+    // Smaller on HCP due to different fonts
+    font-size: 60%;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+    color: $color-brand-purple;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    > li {
+        // These are tighter together on HCP (but not in the ISI)
+        &:not(:last-child) {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            color: $color-brand-purple;
+        }
+    }
+
+    &.list--green-bullets {
+        > li {
+            &:before {
+                color: $color-green;
+            }
+        }
+    }
+}
+
+.eyebrow {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3.5rem;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    color: $color-brand-purple;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -1.5rem;
+        left: 0;
+        display: block;
+        width: 10rem;
+        height: 0.5rem;
+        background-color: $color-green;
+    }
+
+    &.eyebrow--larger-margin {
+        margin-bottom: 4rem;
+
+        &:after {
+            bottom: -2rem;
+        }
+    }
+}
+
+.align-center .eyebrow {
+    &:after {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+.footnote {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+p.subhead {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    color: $color-brand-purple;
+}
+
+hr {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $color-green;
+    border: none;
+}

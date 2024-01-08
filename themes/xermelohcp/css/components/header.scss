@@ -1,0 +1,254 @@
+// Xermelo header
+header {
+    /*
+        Properties
+    */
+    // Disable desktop header compression on HCP
+    @include media(">=medium") {
+        --header-compression: 0px;
+    }
+
+    // Element that becomes fixed positioned
+    .header__fixed-container {
+        // Establishes sizing
+        .grid {
+            // Logo
+            .header__site-logo {
+                position: absolute;
+                top: 1rem;
+                left: 0;
+                transform: translate(
+                    0,
+                    calc(
+                        var(--header-compression-progress) *
+                        (
+                            // This shifts the logo down slightly
+                            2px +
+                            (
+                                var(--header-compression) * 0.5
+                            )
+                        )
+                    )
+                );
+                display: block;
+                width: 224px;
+                height: 67px;
+                background-image: url("/themes/xermelohcp/images/global/xermelo-logo/TRSA_XER_Logo_FullColor_RGB.svg");
+                background-size: contain;
+                // Shifting to the left a bit to accommodate a bit of whitespace in the logo
+                background-position: -3px top;
+                text-indent: -9000em;
+                overflow: hidden;
+                -webkit-tap-highlight-color: transparent;
+
+                @include media(">=small") {
+                    top: 1.5rem;
+                    transform: translate(
+                        0,
+                        calc(
+                            var(--header-compression-progress) *
+                            (
+                                // This shifts the logo down slightly
+                                2px +
+                                (
+                                    var(--header-compression) * 0.5
+                                )
+                            )
+                        )
+                    );
+                    width: 212px;
+                    height: 63px;
+                }
+
+                @include media(">=large") {
+                    left: grid-size(2, 2);
+                }
+            }
+
+            // Hamburger
+            .header__hamburger {
+                span {
+                    background-color: $color-brand-purple;
+                }
+            }
+
+            // Top links (desktop only)
+            .header__top-links {
+                right: 0;
+                font-size: 13px;
+                line-height: 3rem;
+                
+                @include media(">=small") {
+                    // No compression / opacity change on HCP
+                    opacity: 1;
+                }
+
+                @include media(">=large") {
+                    right: grid-size(1, 1);
+                }
+
+                li {
+                    a {
+                        font-weight: normal;
+                        text-decoration: underline;
+                        color: $color-dark-gray;
+                    }
+
+                    &:not(:first-of-type) {
+                        // Undo the tablet padding adjustments for HCP
+                        // as there's room for all the copy
+                        @include media(">=small") {
+                            padding-left: 1.5rem;
+                        }
+                    }
+
+                    &:not(:last-of-type) {
+                        &:after {
+                            // Undo the tablet padding adjustments for HCP
+                            // as there's room for all the copy
+                            @include media(">=small") {
+                                padding-left: 1.5rem;
+                            }
+                        }
+                    }
+                    
+                    &:last-of-type {
+                        a {
+                            // No chevron in the HCP layout
+                            padding-right: 0;
+
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Nav menu
+            > nav {
+                @include media(">=small") {
+                    // Different layout in HCP
+                    width: 100%;
+                }
+                
+                @include media(">=large") {
+                    right: auto;
+                    left: grid-size(2, 2);
+                    width: grid-size(10, 9);
+                }
+
+                .header__nav-scroll-container {
+                    > div {
+                        @include media(">=small") {
+                            // Different layout in HCP
+                            justify-content: space-between;
+                            gap: 0;
+                        }
+
+                        @include media(">=medium") {
+                            // Different layout in HCP
+                            justify-content: flex-start;
+                            gap: 6rem;
+                        }
+
+                        // Individual nav items
+                        > div.header__nav-item {
+                            // Submenu titles & top-level links
+                            span,
+                            > a,
+                            > a:hover,
+                            > a:active,
+                            > a:visited {
+                                font-family: $font-sans;
+                                font-size: 16px;
+                                line-height: 5rem;
+                                font-weight: bold;
+                                text-decoration: none;
+                                color: $color-brand-purple;
+
+                                @include media(">=small") {
+                                    // Different layout in HCP
+                                    padding-bottom: 1rem;
+                                    font-size: 19px;
+                                    line-height: 4rem;
+                                }
+
+                                // Current item / hover indicator
+                                &:before {
+                                    bottom: 0.5rem;
+                                    background-color: $color-green;
+                                    
+                                    @include media(">=small") {
+                                        // Different layout in HCP
+                                        // Padding - height of the indicator
+                                        bottom: calc(1rem - 0.25rem);
+                                    }
+                                }
+                            }
+
+                            // Submenus
+                            > div {
+                                > ul {
+                                    > li {
+                                        a,
+                                        a:hover,
+                                        a:active,
+                                        a:visited {
+                                            font-family: $font-sans;
+                                            font-size: 18px;
+                                            line-height: 32px;
+                                            font-weight: normal;
+                                            text-decoration: none;
+                                            color: $color-brand-purple;
+
+                                            @include media(">=small") {
+                                                font-size: 19px;
+                                                font-weight: bold;
+                                            }
+                                        }
+
+                                        a {
+                                            // Current item / hover indicator
+                                            &:before {
+                                                background-color: $color-green;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // CNE callout
+                        .header__cne-callout {
+                            @include mobile-only;
+                            margin: 2rem 0;
+                            padding: 2rem 4rem;
+                            font-size: 16px;
+                            line-height: 20px;
+                            font-weight: bold;
+                            background-color: $color-green;
+                            border-radius: 1rem;
+
+                            a,
+                            a:hover,
+                            a:active,
+                            a:visited {
+                                font-weight: bold;
+                                color: $color-dark-gray
+                            }
+                        }
+
+                        // "For Healthcare Professionals"
+                        > p {
+                            font-size: 18px;
+                            line-height: 32px;
+                            font-weight: bold;
+                            color: $color-brand-purple;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
