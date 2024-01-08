@@ -1,0 +1,12 @@
+services:
+  conditional_404_pages.conditional_404_page_service:
+    class: Drupal\conditional_404_pages\Conditional404PageService
+    arguments: ['@plugin.manager.condition', '@entity_type.manager', '@path_alias.manager']
+  conditional_404_pages.custom_page_html:
+    class: Drupal\conditional_404_pages\EventSubscriber\ConditionalPageExceptionHtmlSubscriber
+    decorates: exception.custom_page_html
+    decoration_priority: 10
+    public: false
+    tags:
+      - { name: event_subscriber }
+    arguments: ['@conditional_404_pages.custom_page_html.inner', '@conditional_404_pages.conditional_404_page_service', '@config.factory', '@http_kernel', '@logger.channel.php', '@redirect.destination', '@router.no_access_checks', '@access_manager']

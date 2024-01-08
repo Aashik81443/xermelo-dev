@@ -1,0 +1,11 @@
+name: Conditional 404 Pages
+type: module
+description: 'Allows site builders to configure custom 404 pages depending on the path a user attempted to access.'
+package: '404 Pages'
+core_version_requirement: ^8 || ^9
+configure: entity.conditional_404_page.collection
+
+# Information added by Drupal.org packaging script on 2020-05-24
+version: '2.0.0'
+project: 'conditional_404_pages'
+datestamp: 1590348256

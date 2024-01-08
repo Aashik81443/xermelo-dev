@@ -1,0 +1,6 @@
+name: TerSera Forms API
+description: Add custom TerSera forms and API handling for Drupal
+package: TerSera
+
+type: module
+core_version_requirement: ^8 || ^9

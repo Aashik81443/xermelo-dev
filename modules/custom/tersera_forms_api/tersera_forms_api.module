@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implementes hook_page_attachments().
+ */
+function tersera_forms_api_page_attachments(array &$attachments) {
+  // EDIT: these are no longer needed; form javascript has been moved into the main
+  // TerSera theme, and this module exists only to supply API endpoints
+  // // Add our "ask-a-nurse" form library
+  // $attachments['#attached']['library'][] = 'tersera_forms_api/ask-a-nurse';
+
+  // // Add our "request-a-rep" form library
+  // $attachments['#attached']['library'][] = 'tersera_forms_api/request-a-rep';
+}

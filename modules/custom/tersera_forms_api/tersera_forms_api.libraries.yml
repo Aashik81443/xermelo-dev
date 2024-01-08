@@ -1,0 +1,14 @@
+# EDIT: these are no longer needed; form javascript has been moved into the main
+# TerSera theme, and this module exists only to supply API endpoints
+
+# ask-a-nurse:
+#   version: 1.x
+#   js:
+#     js/inputmask.min.js: { minified: true }
+#     js/ask-a-nurse.js: {}
+
+# request-a-rep:
+#   version: 1.x
+#   js:
+#     js/inputmask.min.js: { minified: true }
+#     js/rep-request.js: {}

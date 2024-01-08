@@ -1,0 +1,24 @@
+conditional_404_pages.conditional_404_page.*:
+  type: config_entity
+  label: 'Conditional 404 Page config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    page:
+      type: entity_reference_selection
+      label: 'Page'
+    pathCondition:
+      type: condition.plugin.request_path
+      label: 'Request Path Condition'
+    status:
+      type: boolean
+      label: 'Status'
+    weight:
+      type: integer
+      label: 'Weight'
+    uuid:
+      type: string

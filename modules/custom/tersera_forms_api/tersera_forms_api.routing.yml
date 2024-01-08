@@ -1,0 +1,27 @@
+ask_a_nurse:
+  path: '/api/cne'
+  defaults:
+    _controller: '\Drupal\tersera_forms_api\Controller\AskANurseController::submit'
+  methods: [POST, GET]
+  requirements:
+    _permission: 'access content'
+
+npi_lookup_by_id:
+  path: '/api/npi/{npi}'
+  defaults:
+    _controller: '\Drupal\tersera_forms_api\Controller\NpiController::npiLookupById'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      npi:
+        type: String
+
+npi_lookup:
+  path: '/api/npi'
+  defaults:
+    _controller: '\Drupal\tersera_forms_api\Controller\NpiController::npiLookup'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'

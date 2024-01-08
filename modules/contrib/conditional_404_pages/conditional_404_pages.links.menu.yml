@@ -1,0 +1,8 @@
+
+# Conditional 404 Page menu items definition
+entity.conditional_404_page.collection:
+  title: 'Conditional 404 Page'
+  route_name: entity.conditional_404_page.collection
+  description: 'List Conditional 404 Page (bundles)'
+  parent: system.admin_structure
+  weight: 99
