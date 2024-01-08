@@ -1,0 +1,727 @@
+// TerSera header
+$nav-underline-transition-on: opacity 0s $ease-out-quad;
+
+header {
+    /*
+        Properties
+    */
+    // This defines the amount by which the header compresses
+    // vertically when sticky, which also dictates the scroll
+    // distance through which we transition to the compressed
+    // state - the javascript picks up on these values
+    --header-compression: 20px;
+
+    // This is adjusted by the javascript from 0 to 1 as the
+    // user scrolls through the above distances
+    --header-compression-progress: 0;
+
+    // The header's background coloe
+    --header-background-color: #{rgba(#fff, 0.9)};
+
+    position: relative;
+    height: var(--header-height);
+    
+    @include media(">=small") {
+        --header-compression: 0px;
+    }
+    
+    @include media(">=medium") {
+        --header-compression: 40px;
+    }
+
+    // Element that becomes fixed positioned
+    .header__fixed-container {
+        --header-compressed-height: calc(
+            var(--header-height) -
+            (
+                var(--header-compression) *
+                var(--header-compression-progress)
+            )
+        );
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: $mobile-min-width;
+        height: var(--header-height);
+        background-color: var(--header-background-color);
+        box-shadow: 0 3px 8px 0 rgba(#000, 0.1);
+        z-index: $z-index-header;
+        transition: transform 0.375s $ease-out-cubic,
+            background-color 0.5s $ease-out-quad;
+
+        // Establishes sizing
+        .grid {
+            position: relative;
+            height: 100%;
+            
+            // This is set by modal.js when the scroll bar disappears
+            left: calc(-0.5 * var(--modal-scrollbar-padding, 0));
+
+            @include media(">=small") {
+                max-width: $desktop-max-width;
+                margin: 0 auto;
+            }
+
+            // Hamburger
+            .header__hamburger {
+                position: absolute;
+                top: 50%;
+                right: calc(var(--grid-gutter-width) - 1rem);
+                transform: translate(
+                    50%,
+                    calc(
+                        -50% +
+                        (
+                            0.5 *
+                            var(--header-compression-progress) *
+                            var(--header-compression)
+                        )
+                    )
+                );
+                width: 6rem;
+                height: 6rem;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+
+                @include media(">=small") {
+                    display: none;
+                }
+
+                span {
+                    position: absolute;
+                    top: calc(50% - 2px);
+                    left: calc(50% - 2rem);
+                    display: block;
+                    width: 4rem;
+                    height: 4px;
+                    border-radius: 2rem;
+                    background-color: black;
+                    transform-origin: center;
+                    transition: transform 0.25s $ease-out-cubic,
+                        opacity 0.25s $ease-out-cubic;
+
+                    &:nth-of-type(1) {
+                        top: calc(50% - 2px - 1.25rem);
+                    }
+
+                    &:nth-of-type(4) {
+                        top: calc(50% - 2px + 1.25rem);
+                    }
+                }
+
+                // Selected state
+                &.header__hamburger--selected {
+                    span {
+                        transition: transform 0.25s $ease-out-cubic,
+                            opacity 0.25s $ease-out-cubic;
+
+                        &:nth-of-type(1) {
+                            opacity: 0;
+                            transform: scale(0, 1) translate(0, 1rem);
+                        }
+
+                        &:nth-of-type(2) {
+                            transform: rotate(45deg);
+                        }
+
+                        &:nth-of-type(3) {
+                            transform: rotate(-45deg);
+                        }
+
+                        &:nth-of-type(4) {
+                            opacity: 0;
+                            transform: scale(0, 1) translate(0, -1rem);
+                        }
+                    }
+                }
+            }
+
+            // Top links (desktop)
+            .header__top-links {
+                @include desktop-only;
+                @extend .list--plain;
+
+                position: absolute;
+                font-size: 2rem;
+                line-height: 2rem;
+                
+                @include media(">=small") {
+                    --header-compression-progress-inverted: calc(1 - var(--header-compression-progress));
+                    display: flex;
+                    top: 2rem;
+                    right: 0;
+                    width: auto;
+                    opacity: calc(
+                        var(--header-compression-progress-inverted) *
+                        var(--header-compression-progress-inverted) *
+                        var(--header-compression-progress-inverted)
+                    );
+                }
+
+                li {
+                    &:not(:first-of-type) {
+                        padding-left: 1.5rem;
+                        
+                        @include media(">=small") {
+                            padding-left: 1rem;
+                        }
+
+                        @include media(">=medium") {
+                            padding-left: 1.5rem;
+                        }
+                    }
+
+                    &:not(:last-of-type) {
+                        &:after {
+                            content: '|';
+                            padding-left: 1.5rem;
+                        
+                            @include media(">=small") {
+                                padding-left: 1rem;
+                            }
+    
+                            @include media(">=medium") {
+                                padding-left: 1.5rem;
+                            }
+                        }
+                    }
+
+                    &:last-of-type {
+                        position: relative;
+
+                        a {
+                            padding-right: 1.75rem;
+
+                            @include media(">=small") {
+                                padding-right: 0;
+                            }
+                            
+                            @include media(">=medium") {
+                                padding-right: 1.75rem;
+                            }
+                            
+                            &:after {
+                                content: "\e5cc";
+                                padding-left: 1rem;
+                                position: absolute;
+                                top: 0;
+                                right: -0.5rem;
+                                font-family: $font-material-symbols;
+                                font-size: 18px;
+                                font-weight: normal;
+                                font-variation-settings:
+                                    'FILL' 0,
+                                    'wght' 600,
+                                    'GRAD' 0,
+                                    'opsz' 48;
+                                
+                                @include media(">=small") {
+                                    display: none;
+                                }
+                                
+                                @include media(">=medium") {
+                                    display: initial;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Nav menu
+            > nav {
+                position: absolute;
+                top: 100%;
+                left: calc(
+                    -1 *
+                    var(--grid-gutter-width)
+                );
+                display: none;
+                // Adjust for any body padding due to scroll locking
+                width: calc(
+                    100% +
+                    (
+                        2 *
+                        var(--grid-gutter-width)
+                    ) +
+                    var(--body-right-padding, 0px)
+                );
+                background-color: var(--header-background-color);
+
+                @include media(">=small") {
+                    top: auto;
+                    left: auto;
+                    bottom: 0;
+                    right: 0;
+                    display: block;
+                    width: auto;
+                    background-color: transparent;
+                }
+
+                // // Inner shadow
+                // &:before {
+                //     content: "";
+                //     position: fixed;
+                //     top: var(--header-compressed-height);
+                //     left: 0;
+                //     display: block;
+                //     width: 100%;
+                //     height: 1rem;
+                //     background: linear-gradient(black, transparent);
+                //     opacity: 0;
+                //     pointer-events: none;
+                //     transition: opacity 0.5s $ease-in-quad;
+
+                //     @include media(">=small") {
+                //         display: none;
+                //     }
+                // }
+
+                // Outer shadow
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: -1rem;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 1rem;
+                    background: linear-gradient(black, transparent);
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.5s $ease-in-quad;
+
+                    @include media(">=small") {
+                        display: none;
+                    }
+                }
+
+                // This inner div scrolls on mobile; the entire <nav> could
+                // scroll but then the outer shadow pseudo element would be
+                // hidden. We're not just using a box-shadow because we
+                // don't want any shadowing at the top of the nav
+                .header__nav-scroll-container {
+                    max-height: calc(100vh - var(--header-compressed-height));
+                    overflow: scroll;
+                    -webkit-overflow-scrolling: touch;
+                    
+                    @include media(">=small") {
+                        max-height: none;
+                        overflow: visible;
+                    }
+
+                    // This wraps the content for easy styling & measuring
+                    // of its height
+                    > div {
+                        padding: 0 var(--grid-gutter-width);
+                        overflow: hidden;
+
+                        @include media(">=small") {
+                            display: flex;
+                            gap: 4rem;
+                            padding: 0;
+                            overflow: visible;
+                        }
+
+                        // All contents of the nav, which may include nav
+                        // items, banners, other content etc.
+                        > * {
+                            &:first-child {
+                                // If the header has compressed, add additional
+                                // margin to make up for the lost whitespace
+                                margin-top: calc(
+                                    var(--header-compression-progress) *
+                                    (
+                                        var(--header-compression) *
+                                        0.5
+                                    )
+                                );
+                                
+                                @include media(">=small") {
+                                    margin-top: 0;
+                                }
+                            }
+
+                            &:last-child {
+                                // Space at the bottom of the nav menu
+                                margin-bottom: 2rem;
+                                
+                                @include media(">=small") {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+
+                        // Individual nav items
+                        > div.header__nav-item {
+                            @extend %no-select;
+                            position: relative;
+
+                            @include media(">=small") {
+                                pointer-events: none;
+                                white-space: nowrap;
+                            }
+
+                            // Submenu titles & top-level links
+                            span,
+                            > a {
+                                position: relative;
+                                display: inline-block;
+
+                                @include media(">=small") {
+                                    // This adds space and maintains the mouse hover state
+                                    // as it moves between the title and the submenu
+                                    padding-bottom: 1rem;
+                                    pointer-events: all;
+                                }
+                                
+                                @include media(">=medium") {
+                                    padding-bottom: 2rem;
+                                }
+
+                                // Current item / hover indicator
+                                &:before {
+                                    content: "";
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 0;
+                                    display: block;
+                                    width: 100%;
+                                    height: 0.5rem;
+                                    background-color: #000;
+                                    opacity: 0;
+                                    transition: opacity 0.25s $ease-out-quad;
+                                    
+                                    @include media(">=small") {
+                                        // Padding - height of the indicator
+                                        bottom: calc(1rem - 0.25rem);
+                                    }
+                                    
+                                    @include media(">=medium") {
+                                        // Padding - height of the indicator
+                                        bottom: calc(2rem - 0.5rem);
+                                    }
+                                }
+                            }
+
+                            > a {
+                                cursor: pointer;
+                            }
+
+                            // Submenu titles
+                            span {
+                                position: relative;
+
+                                // Chevron
+                                @include media(">=small") {
+                                    padding-right: 2.5rem;
+
+                                    &:after {
+                                        content: "\e5cc";
+                                        position: absolute;
+                                        top: 0;
+                                        right: -0.5rem;
+                                        font-family: $font-material-symbols;
+                                        font-size: 24px;
+                                        font-weight: normal;
+                                        font-variation-settings:
+                                            'FILL' 0,
+                                            'wght' 600,
+                                            'GRAD' 0,
+                                            'opsz' 48;
+                                    }
+                                }
+                            }
+
+                            // Submenus
+                            > div {
+                                @include media(">=small") {
+                                    // On desktop, these submenus appear on hover
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 0;
+                                    opacity: 0;
+                                    pointer-events: none;
+                                    z-index: 1;
+                                    
+                                    // White submenu background
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        bottom: 0;
+                                        left: 0;
+                                        display: block;
+                                        width: 100%;
+                                        height: 100%;
+                                        background-color: var(--header-background-color);
+                                        box-shadow: 0 2px 10px 0 rgba(#000, 0.2);
+                                        border-bottom-left-radius: 1rem;
+                                        border-bottom-right-radius: 1rem;
+
+                                        // This is to clip out the box-shadow at the top of the submenu
+                                        clip-path: polygon(-100% 0, 200% 0, 200% 200%, 0 200%);
+                                    }
+                                }
+
+                                > ul {
+                                    @extend .list--plain;
+                                    overflow: hidden;
+
+                                    > li {
+                                        padding-left: 4rem;
+                                        
+                                        @include media(">=small") {
+                                            padding-left: 2rem;
+                                            padding-right: 2rem;
+                                        }
+            
+                                        a {
+                                            position: relative;
+                                            display: inline-block;
+            
+                                            @include media(">=small") {
+                                                // padding: 0.125rem 2rem;
+                                                padding: 0.125rem 0;
+                                            }
+
+                                            // Current item / hover indicator
+                                            &:before {
+                                                content: "";
+                                                position: absolute;
+                                                // Padding - height of the indicator
+                                                bottom: 0;
+                                                left: 0;
+                                                display: block;
+                                                width: 100%;
+                                                height: 0.5rem;
+                                                background-color: #000;
+                                                opacity: 0;
+                                                transition: opacity 0.25s $ease-out-quad;
+                                            }
+
+                                            // Hover state
+                                            &:hover {
+                                                // Current item / hover indicator
+                                                &:before {
+                                                    opacity: 1;
+                                                    transition: $nav-underline-transition-on;
+                                                }
+                                            }
+                                        }
+            
+                                        // Spacing above & below the submenu items
+                                        &:first-of-type {
+                                            a {
+                                                @include media(">=small") {
+                                                    margin-top: 1rem;
+                                                }
+                                            }
+                                        }
+            
+                                        &:last-of-type {
+                                            a {
+                                                @include media(">=small") {
+                                                    margin-bottom: 1.5rem;
+                                                }
+                                            }
+                                        }
+
+                                        // Current page indicator
+                                        &.header--active {
+                                            a {
+                                                // Current item / hover indicator
+                                                &:before {
+                                                    opacity: 1;
+                                                    transition: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // The last submenu opens to the left on desktop
+                            &.header__nav-item--right-aligned {
+                                // Submenus
+                                > div {
+                                    @include media(">=small") {
+                                        left: auto;
+                                        right: 0;
+                                    }
+                                }
+                            }
+
+                            // Hover state
+                            &.header__nav-item--hover {
+                                // Submenu titles
+                                span {
+                                    // Chevron
+                                    @include media(">=small") {
+                                        &:after {
+                                            content: "\e5cf";
+                                        }
+                                    }
+                                }
+
+                                // Submenu titles
+                                span {
+                                    @include media(">=small") {
+                                        // Current item / hover indicator
+                                        &:before {
+                                            opacity: 1;
+                                            transition: $nav-underline-transition-on;
+                                        }
+                                    }
+                                }
+
+                                // Top-level links
+                                > a {
+                                    // Current item / hover indicator
+                                    &:before {
+                                        opacity: 1;
+                                        transition: $nav-underline-transition-on;
+                                    }
+                                }
+                            }
+
+                            // Submenu open state
+                            &.header__nav-item--open {
+                                // Submenus
+                                > div {
+                                    opacity: 1;
+                                    pointer-events: all;
+                                }
+                            }
+
+                            // Current section or page indicator
+                            &.header--active {
+                                // Submenu titles
+                                span {
+                                    @include media(">=small") {
+                                        // Current item / hover indicator
+                                        &:before {
+                                            opacity: 1;
+                                            transition: $nav-underline-transition-on;
+                                        }
+                                    }
+                                }
+                                
+                                // Top-level links
+                                > a {
+                                    // Current item / hover indicator
+                                    &:before {
+                                        opacity: 1;
+                                        transition: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Sticky header
+    &.header--sticky {
+        // Element that becomes fixed positioned
+        .header__fixed-container {
+            position: fixed;
+            top: calc(
+                -1 *
+                (
+                    var(--header-compression-progress) *
+                    var(--header-compression)
+                )
+            );
+
+            // Adjust for any body padding due to scroll locking
+            padding-right: var(--body-right-padding, 0px);
+        }
+    }
+
+    // Open mobile menu
+    &.header--open,
+    &.header--closing {
+        // Element that becomes fixed positioned
+        .header__fixed-container {
+            z-index: $z-index-header-isi-open;
+        }
+
+        // On iOS, if the header isn't sticky when opened,
+        // it's possible to cause Safari's nav bar to hide
+        // and reveal a little background space above the
+        // top of the header...
+        &:not(.header--sticky) {
+            // Element that becomes fixed positioned
+            .header__fixed-container {
+                &:before {
+                    content: "";
+                    position: absolute;
+                    bottom: 100%;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100vh;
+                    background-color: var(--header-background-color);
+                }
+            }
+        }
+    }
+
+    &.header--open {
+        // background-color: rgba(#fff, 0.925);
+        // transition: background-color 0.5s $ease-out-quad;
+        
+        // Element that becomes fixed positioned
+        .header__fixed-container {
+            // Establishes sizing
+            .grid {
+                // Nav menu
+                > nav {
+                    // // Inner shadow
+                    // &:before {
+                    //     opacity: 0.125;
+                    //     transition: opacity 0.5s $ease-out-quad;
+                    // }
+
+                    // Outer shadow
+                    &:after {
+                        opacity: 0.125;
+                        transition: opacity 0.5s $ease-out-quad;
+                    }
+                }
+            }
+        }
+    }
+
+    // Hidden mode when sticky and using the "scrollIntent" sticky mode
+    &.header--hidden:not(.header--open) {
+        // Element that becomes fixed positioned
+        .header__fixed-container {
+            transform: translate(0, -100%);
+            transition: transform 0.375s $ease-out-cubic;
+            pointer-events: none;
+
+            // Establishes sizing
+            .grid {
+                // Nav menu
+                > nav {
+                    > div {
+                        // Individual nav items
+                        > div.header__nav-item {
+                            // Submenus
+                            > div {
+                                // This causes submenus to hide when the header
+                                // hides if they're currently open on desktop
+                                pointer-events: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

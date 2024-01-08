@@ -1,0 +1,20 @@
+{%
+
+set classes = [
+  'cne-sign-up'
+]
+
+%}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div id="sign-up" class="grid">
+        {% if content.field_introduction %}
+            {{ content.field_introduction.0 }}
+        {% endif %}
+
+        {{ content.field_form.0 }}
+    </div>
+</section>

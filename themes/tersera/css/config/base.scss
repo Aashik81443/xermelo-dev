@@ -1,0 +1,298 @@
+// TerSera base styles
+&,
+&::before,
+&::after,
+& *,
+& *::before,
+& *::after {
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+main {
+    section {
+        position: relative;
+
+        // Default margin between sections - we're using
+        // margin-top here so that margins can be adjusted
+        // between specific combinations of sections
+        & + section {
+            > .grid {
+                margin-top: 5rem;
+    
+                @include media(">=small") {
+                    margin-top: 6rem;
+                }
+
+                // Class for removing top margin in specific
+                // instances
+                &.no-top-margin {
+                    margin-top: 0;
+                }
+
+                &.desktop-no-top-margin {
+                    @include media(">=small") {
+                        margin-top: 0;
+                    }
+                }
+
+                &.smaller-top-margin {
+                    margin-top: 4rem;
+                }
+            }
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+
+        &.no-bottom-margin {
+            margin-bottom: 0;
+        }
+
+        &.smaller-bottom-margin {
+            margin-bottom: 1rem;
+        }
+
+        &.medium-bottom-margin {
+            @include media(">=small") {
+                margin-bottom: 4rem;
+            }
+        }
+
+        &.large-bottom-margin {
+            margin-bottom: 4rem;
+        
+            @include media(">=small") {
+                margin-bottom: 6rem;
+            }
+        }
+    }
+}
+
+p {
+    margin: 0 0 1.5rem;
+
+    &:not(:last-child) {
+        &.no-bottom-margin {
+            margin-bottom: 0;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+ol,
+ul {
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style-type: none;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    li {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+ol {
+    counter-reset: list-counter;
+
+    > li {
+        padding-left: 4.5rem;
+
+        &:before {
+            content: counter(list-counter) ".";
+            counter-increment: list-counter;
+            position: absolute;
+            left: 1.5rem;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+ul {
+    > li {
+        padding-left: 5rem;
+
+        &:before {
+            content: "\2022";
+            position: absolute;
+            left: 2rem;
+            transform: translate(-50%, 0);
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    ul {
+        > li {
+            &:before {
+                content: "-";
+            }
+        }
+    }
+
+    &.list--plain {
+        margin: 0;
+        padding: 0;
+
+        > li {
+            margin: 0;
+            padding: 0;
+
+            &:before {
+                content: none;
+            }
+        }
+    }
+
+    &.list--no-margin {
+        li {
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: super;
+    white-space: nowrap;
+}
+
+sub {
+    bottom: -0.5em;
+}
+
+img {
+    max-width: 100%;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    &:not(:last-of-type) {
+        margin-bottom: 4rem;
+    }
+}
+    
+.mobile-only {
+    @include mobile-only;
+}
+
+.desktop-only {
+    @include desktop-only;
+}
+
+.medium-only {
+    @include medium-only;
+}
+
+.large-only {
+    @include large-only;
+}
+
+.x-large-only {
+    @include x-large-only;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.desktop-block {
+    @include media(">=small") {
+        display: block;
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-center-m {
+    text-align: center;
+
+    @include media(">=small") {
+        text-align: initial;
+    }
+}
+
+.align-center-d {
+    @include media(">=small") {
+        text-align: center;
+    }
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-right-m {
+    text-align: right;
+
+    @include media(">=small") {
+        text-align: initial;
+    }
+}
+
+.align-right-d {
+    @include media(">=small") {
+        text-align: right;
+    }
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-left-m {
+    text-align: left;
+
+    @include media(">=small") {
+        text-align: initial;
+    }
+}
+
+.align-left-d {
+    @include media(">=small") {
+        text-align: left;
+    }
+}

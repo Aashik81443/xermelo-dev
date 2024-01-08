@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_preprocess_htnl().
+ */
+function tersera_preprocess_html(&$variables) {
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  if (isset($path_args[1]) && isset($path_args[2]) && ($path_args[1] == 'node') && (is_numeric($path_args[2]))) {
+    $variables['attributes']['class'][] = 'page-node-' . $path_args[2];
+  }  
+}
+
+
+/**
+ * Implements hook_preprocess_page() for page templates.
+ */
+function tersera_preprocess_page(&$variables) {
+  $variables['logopath'] = file_url_transform_relative(file_create_url(theme_get_setting('logo.url')));
+}

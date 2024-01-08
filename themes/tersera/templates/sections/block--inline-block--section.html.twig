@@ -1,0 +1,21 @@
+{% if content.field_class.0 is not empty %}
+    {%
+        set classes = [
+            (render_var(content.field_class.0))
+        ]
+    %}
+{% else %}
+    {%
+        set classes = [
+        ]
+    %}
+{% endif %}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% if content.body %}
+        {{ content.body }}
+    {% endif %}
+</section>

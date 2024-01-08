@@ -1,0 +1,134 @@
+// On-page template
+#npi-lookup-modal {
+    @include modal-template;
+}
+
+// Modal template
+.modal.npi-lookup-modal {
+    // 8 columns
+    --modal-max-width: 108rem;
+
+    h3 {
+        margin-bottom: 2rem;
+    }
+
+    form {
+        margin-top: 3rem;
+    }
+
+    .form__field-group {
+        > div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            @include media(">=small") {
+                gap: var(--grid-column-spacing);
+            }
+
+            .form__field {
+                @include media(">=small") {
+                    width: calc(0.4 * (100% - var(--grid-column-spacing)));
+                }
+
+                &.form__field--narrow {
+                    @include media(">=small") {
+                        width: calc(0.25 * (100% - var(--grid-column-spacing)));
+                    }
+                }
+            }
+
+            .form__error {
+                @include media(">=small") {
+                    position: relative;
+                    margin: 0;
+                    padding-left: 5rem;
+                    width: calc(0.6 * (100% - var(--grid-column-spacing)));
+
+                    &:before,
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 8px;
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                        display: block;
+                        width: 5px;
+                        height: 18px;
+                        border-radius: 2px;
+                        background-color: red;
+                    }
+                
+                    &:after {
+                        transform: translate(-50%, -50%) rotate(45deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .npi-lookup-modal__submit {
+        .buttons {
+            margin: 0;
+        }
+    }
+
+    .npi-results {
+        display: none;
+        margin-top: 7rem;
+
+        .record-count {
+            display: none;
+        }
+        
+        table {
+            width: 100%;
+            text-align: left;
+
+            thead {
+                display: none;
+
+                @include media(">=small") {
+                    display: block;
+                    display: table-header-group;
+                }
+            }
+
+            tr {
+                display: flex;
+                flex-wrap: wrap;
+
+                &:not(:last-child) {
+                    margin-bottom: 4rem;
+                }
+
+                @include media(">=small") {
+                    display: table-row;
+                    flex-wrap: nowrap;
+                    margin-bottom: 0;
+                }
+            }
+
+            td {
+                padding: 2px 0;
+                flex-basis: 100%;
+
+                @include media(">=small") {
+                    padding: 0 10px 5px 0;
+                }
+
+                &.col-cta button {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .npi-no-results {
+        display: none;
+        margin-top: 7rem;
+    }
+}

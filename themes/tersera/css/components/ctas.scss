@@ -1,0 +1,67 @@
+.ctas,
+.eop-callouts {
+    .grid {
+        @extend .grid--blocks-4rem;
+
+        @include media(">=large") {
+            gap: grid-size(0.5, 0);
+        }
+
+        > div {
+            padding: 5rem;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: solid #000 1rem;
+            box-shadow: 0 0 8px 3px rgba(0,0,0,0.1);
+
+            @include media(">=small") {
+                position: relative;
+                padding-bottom: 12rem;
+                width: grid-size(6, 5);
+            }
+            
+            @include media(">=large") {
+                width: grid-size(3, 3);
+            }
+            
+            .eyebrow {
+                margin-bottom: 1.5rem;
+
+                &:after {
+                    bottom: -2rem;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+
+            p {
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
+            }
+
+            .button {
+                white-space: nowrap;
+
+                @include media(">=small") {
+                    position: absolute;
+                    bottom: 6rem;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+        }
+    }
+}
+
+section + .ctas,
+section + .eop-callouts {
+    // Larger margin than usual above these callouts
+    .grid {
+        margin-top: 8rem;
+
+        @include media(">=small") {
+            margin-top: 9rem;
+        }
+    }
+}

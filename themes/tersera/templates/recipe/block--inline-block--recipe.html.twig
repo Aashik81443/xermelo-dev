@@ -1,0 +1,32 @@
+{%
+
+set classes = [
+  'recipe'
+]
+
+%}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div class="grid grid--justify-start">
+        <div class="col-d--10-9 col-large--7-6 ml-d--1-1 ml-large--2-2">
+            {% if content.field_video_id %}
+              <div>
+                  <script src="https://fast.wistia.com/embed/medias/{{ content.field_video_id.0 }}.jsonp"></script>
+                  <script src="https://fast.wistia.com/assets/external/E-v1.js"></script>
+                  <div class="wistia_responsive_padding" style="padding: 56.0% 0 0 0; position: relative;">
+                      <div class="wistia_responsive_wrapper" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;">
+                          <div class="wistia_embed wistia_async_{{ content.field_video_id.0 }} videoFoam=true" style="height: 100%; width: 100%;">&nbsp;</div>
+                      </div>
+                  </div>
+              </div>
+            {% endif %}
+
+            {% if content.body %}
+                {{ content.body }}
+            {% endif %}
+        </div>
+    </div>
+</section>

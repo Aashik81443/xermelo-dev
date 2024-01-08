@@ -1,0 +1,15 @@
+// TerSera banners that appear above or inside the header
+.banner {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.1);
+
+    > div {
+        padding: 1rem var(--grid-gutter-width);
+    
+        > div {
+            @include media(">=small") {
+                max-width: $desktop-max-width;
+                margin: 0 auto;
+            }
+        }
+    }
+}

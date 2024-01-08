@@ -1,0 +1,125 @@
+// A button element
+.button {
+    @extend %no-select;
+    position: relative;
+    display: inline-block;
+    padding: 1.75rem 3rem;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: solid 2px #000;
+        pointer-events: none;
+        z-index: -1;
+        transition: transform 0.25s $ease-out-cubic;
+    }
+
+    &:hover,
+    &:focus {
+        &:before {
+            transform: translate(-50%, -50%) scale(1.0625);
+            transition: transform 0.0625s $ease-out-cubic;
+        }
+    }
+
+    p + &,
+    h3 + & {
+        // This combines with the p's margin-bottom due to
+        // buttons being inline-block
+        margin-top: 1rem;
+    }
+    
+    // Used for the submit button on forms; input elements
+    // can't have pseudo classes
+    input {
+        display: inline-block;
+        padding: 1.75rem 3rem;
+        // font-size: 2rem;
+        // line-height: 3rem;
+        // font-weight: $font-weight-bold;
+        // text-align: center;
+        border: none;
+        outline: none;
+        // white-space: nowrap;
+        // color: #fff;
+        background-color: transparent;
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+    }
+
+    &.button--input {
+        padding: 0;
+    }
+
+    &.button--icon-download {
+        padding-right: 5.25rem;
+
+        &:after {
+            content: "\f090";
+            padding-left: 1rem;
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 12px;
+            transform: translate(0, -50%);
+            font-family: $font-material-symbols;
+            font-size: 22px;
+            font-weight: normal;
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+        }
+    }
+
+    &.button--icon-chevron-down {
+        padding-right: 5.25rem;
+
+        &:after {
+            content: "\e5cf";
+            padding-left: 1rem;
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translate(0, -50%);
+            font-family: $font-material-symbols;
+            font-size: 42px;
+            font-weight: normal;
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+        }
+    }
+}
+
+a.button,
+a.button:hover,
+a.button:active,
+a.button:visited {
+    text-decoration: none;
+}
+
+// A containing element
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    @include media(">=small") {
+        flex-direction: row;
+        gap: 3rem;
+    }
+}

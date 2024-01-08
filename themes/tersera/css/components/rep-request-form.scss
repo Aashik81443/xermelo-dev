@@ -1,0 +1,16 @@
+// Section containing the rep request form,
+// which includes introductory copy
+.request-a-representative {
+    // The form
+    .form--request-a-representative {
+        margin-top: 2rem;
+        padding-top: 4rem;
+        padding-bottom: 6rem;
+        
+        @include media(">=small") {
+            margin-top: 4rem;
+            padding-top: 5rem;
+            padding-bottom: 8rem;
+        }
+    }
+}

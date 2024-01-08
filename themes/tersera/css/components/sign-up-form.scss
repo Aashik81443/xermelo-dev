@@ -1,0 +1,23 @@
+// Section containing the sign up form on the "Ask a Nurse" page,
+// which includes introductory copy
+.cne-sign-up {
+    padding-top: 6rem;
+    border-top: solid 1px #000;
+
+    .grid {
+        margin-top: 0;
+    }
+    
+    // The sign up form
+    .form--cne-sign-up {
+        margin-top: 2rem;
+        padding-top: 4rem;
+        padding-bottom: 6rem;
+        
+        @include media(">=small") {
+            margin-top: 4rem;
+            padding-top: 5rem;
+            padding-bottom: 8rem;
+        }
+    }
+}

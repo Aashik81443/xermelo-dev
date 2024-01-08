@@ -1,0 +1,413 @@
+/*
+    Grid - this includes the base ".grid" class
+    as well as column, margin, and padding classes
+*/
+
+// Specific additional breakpoints beyond mobile & desktop
+// for which to generate column width, right margin, left
+// margin, right padding, and left padding -
+// just to note, each of these increases the size of the
+// generated CSS files quite a bit, so we're just limiting
+// it to a few that tend to require layout adjustment
+$grid-additional-breakpoint-classes-to-output: "medium", "large", "x-large";
+
+/*
+    Properties
+*/
+:root {
+    // These are used hierarchically to set the widths of
+    // elements based on the number of columns and spaces
+    // taken up by their containing element within the grid
+    --grid-parent-columns: var(--grid-num-columns);
+    --grid-parent-spaces: var(--grid-num-spaces);
+}
+
+// This establishes the max width of the center column
+// as well as its gutters to the left and right, and acts
+// as the base for the subtree of grid-aligned elements
+.grid {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: calc(
+        100% -
+        (
+            2 *
+            var(--grid-gutter-width)
+        )
+    );
+    margin: 0 auto;
+    
+    @include media(">=small") {
+        max-width: $desktop-max-width;
+    }
+
+    // Only non-nested grids incorporate the side gutters
+    .grid {
+        width: 100%;
+        margin: 0;
+    }
+
+    // Reversing grid order
+    &.grid--flow-row-reverse {
+        flex-direction: row-reverse;
+
+        .grid {
+            flex-direction: initial;
+        }
+    }
+
+    &.grid-d--flow-row-reverse {
+        @include media(">=small") {
+            flex-direction: row-reverse;
+
+            .grid {
+                flex-direction: initial;
+            }
+        }
+    }
+
+    &.grid--flow-column-reverse {
+        flex-direction: column-reverse;
+
+        .grid {
+            flex-direction: initial;
+        }
+    }
+
+    &.grid-d--flow-column-reverse {
+        @include media(">=small") {
+            flex-direction: column-reverse;
+
+            .grid {
+                flex-direction: initial;
+            }
+        }
+    }
+
+    &.grid-d--flow-normal {
+        @include media(">=small") {
+            flex-direction: initial;
+        }
+    }
+
+    // Alignment (default is "justify-content: center" and
+    // "align-items: flex-start")
+    &.grid--justify-center {
+        justify-content: center;
+    }
+    
+    &.grid-d--justify-center {
+        @include media(">=small") {
+            justify-content: center;
+        }
+    }
+    
+    &.grid--justify-start {
+        justify-content: flex-start;
+    }
+    
+    &.grid-d--justify-start {
+        @include media(">=small") {
+            justify-content: flex-start;
+        }
+    }
+    
+    &.grid--justify-end {
+        justify-content: flex-end;
+    }
+    
+    &.grid-d--justify-end {
+        @include media(">=small") {
+            justify-content: flex-end;
+        }
+    }
+
+    &.grid--justify-space-between {
+        @include media(">=small") {
+            justify-content: space-between;
+        }
+    }
+    
+    &.grid--align-center {
+        align-items: center;
+    }
+    
+    &.grid-d--align-center {
+        @include media(">=small") {
+            align-items: center;
+        }
+    }
+    
+    &.grid--align-start {
+        align-items: flex-start;
+    }
+    
+    &.grid-d--align-start {
+        @include media(">=small") {
+            align-items: flex-start;
+        }
+    }
+    
+    &.grid--align-end {
+        align-items: flex-end;
+    }
+    
+    &.grid-d--align-end {
+        @include media(">=small") {
+            align-items: flex-end;
+        }
+    }
+    
+    // Blocks within a grid, spaced differently than
+    // the default grid gap
+    &.grid--blocks-2rem {
+        gap: 2rem;
+    }
+
+    &.grid--blocks-3rem {
+        gap: 3rem;
+    }
+
+    &.grid--blocks-4rem {
+        gap: 4rem;
+    }
+
+    &.grid--blocks-d-3rem {
+        @include media(">=small") {
+            gap: 3rem;
+        }
+    }
+
+    &.grid--blocks-d-4rem {
+        @include media(">=small") {
+            gap: 4rem;
+        }
+    }
+
+    &.grid--blocks-d-6rem {
+        @include media(">=small") {
+            gap: 6rem;
+        }
+    }
+
+    // Gap / column spacing - by default there is no gap so
+    // as to allow for content that flows into the area
+    // occupied by spaces in the grid
+    &.grid--gap {
+        gap: var(--grid-column-spacing);
+    }
+
+    &.grid-d--gap {
+        @include media(">=small") {
+            gap: var(--grid-column-spacing);
+        }
+    }
+
+    &.grid--no-gap {
+        gap: 0;
+    }
+
+    &.grid-d--no-gap {
+        @include media(">=small") {
+            gap: 0;
+        }
+    }
+
+    &.grid--gap-50px {
+        gap: 50px;
+    }
+
+    &.grid-d--gap-50px {
+        @include media(">=small") {
+            gap: 50px;
+        }
+    }
+
+    // Default children to full width if a specific column size isn't specified
+    > * {
+        width: 100%;
+    }
+
+    // Mobile columns
+    @for $column-index from 0 through $grid-mobile-num-columns {
+        $columns: $grid-mobile-num-columns - $column-index;
+
+        @for $space-index from 0 through $grid-mobile-num-spaces {
+            $spaces: $grid-mobile-num-spaces - $space-index;
+
+            // Column sizes - an example for 3 columns
+            // and 2 spaces:
+            //   .col--3-2
+            .col--#{$columns}-#{$spaces} {
+                width: grid-size(
+                    #{$columns},
+                    #{$spaces});
+                
+                &:before,
+                &:after,
+                * {
+                    --grid-parent-columns: #{$columns};
+                    --grid-parent-spaces: #{$spaces};
+                }
+            }
+            
+            // Left margins - an example for 1 column
+            // and 1 space:
+            //   .ml--1-1
+            .ml--#{$columns}-#{$spaces} {
+                margin-left: grid-size(
+                    #{$columns},
+                    #{$spaces});
+            }
+            
+            // Right margins - e.g.,
+            //   .mr--1-1
+            .mr--#{$columns}-#{$spaces} {
+                margin-right: grid-size(
+                    #{$columns},
+                    #{$spaces});
+            }
+            
+            // Left padding - e.g.,
+            //   .pl--1-1
+            .pl--#{$columns}-#{$spaces} {
+                padding-left: grid-size(
+                    #{$columns},
+                    #{$spaces});
+            }
+            
+            // Right padding - e.g.,
+            //   .pr--1-1
+            .pr--#{$columns}-#{$spaces} {
+                padding-right: grid-size(
+                    #{$columns},
+                    #{$spaces});
+            }
+        }
+    }
+
+    // Desktop columns
+    @include media(">=small") {
+        @for $column-index from 0 through $grid-desktop-num-columns {
+            $columns: $grid-desktop-num-columns - $column-index;
+
+            @for $space-index from 0 through $grid-desktop-num-spaces {
+                $spaces: $grid-desktop-num-spaces - $space-index;
+
+                // Column sizes at >="small" - example for 8 columns
+                // and 7 spaces:
+                //   .col-d--8-7
+                .col-d--#{$columns}-#{$spaces} {
+                    width: grid-size(
+                        #{$columns},
+                        #{$spaces});
+                    
+                    &:before,
+                    &:after,
+                    * {
+                        --grid-parent-columns: #{$columns};
+                        --grid-parent-spaces: #{$spaces};
+                    }
+                }
+                
+                // Left margins - an example for 1 column
+                // and 1 space:
+                //   .ml-d--1-1
+                .ml-d--#{$columns}-#{$spaces} {
+                    margin-left: grid-size(
+                        #{$columns},
+                        #{$spaces});
+                }
+                
+                // Right margins - e.g.,
+                //   .mr-d--1-1
+                .mr-d--#{$columns}-#{$spaces} {
+                    margin-right: grid-size(
+                        #{$columns},
+                        #{$spaces});
+                }
+                
+                // Left padding - e.g.,
+                //   .pl-d--1-1
+                .pl-d--#{$columns}-#{$spaces} {
+                    padding-left: grid-size(
+                        #{$columns},
+                        #{$spaces});
+                }
+                
+                // Right padding - e.g.,
+                //   .pr-d--1-1
+                .pr-d--#{$columns}-#{$spaces} {
+                    padding-right: grid-size(
+                        #{$columns},
+                        #{$spaces});
+                }
+            }
+        }
+    }
+
+    // Settings for specifically-named breakpoints
+    @each $breakpoint-name in $grid-additional-breakpoint-classes-to-output {
+        // A specific breakpoint
+        @include media(">=#{$breakpoint-name}") {
+            @for $column-index from 0 through $grid-desktop-num-columns {
+                $columns: $grid-desktop-num-columns - $column-index;
+
+                @for $space-index from 0 through $grid-desktop-num-spaces {
+                    $spaces: $grid-desktop-num-spaces - $space-index;
+
+                    // Column sizes - example for 10 columns and
+                    // 9 spaces at >="large":
+                    //   .col-large--10-9
+                    .col-#{$breakpoint-name}--#{$columns}-#{$spaces} {
+                        width: grid-size(
+                            #{$columns},
+                            #{$spaces});
+                        
+                        &:before,
+                        &:after,
+                        * {
+                            --grid-parent-columns: #{$columns};
+                            --grid-parent-spaces: #{$spaces};
+                        }
+                    }
+
+                    // Left margins - an example for 1 column
+                    // and 1 space:
+                    //   .ml-large--1-1
+                    .ml-#{$breakpoint-name}--#{$columns}-#{$spaces} {
+                        margin-left: grid-size(
+                            #{$columns},
+                            #{$spaces});
+                    }
+                    
+                    // Right margins - e.g.,
+                    //   .mr-large--1-1
+                    .mr-#{$breakpoint-name}--#{$columns}-#{$spaces} {
+                        margin-right: grid-size(
+                            #{$columns},
+                            #{$spaces});
+                    }
+                    
+                    // Left padding - e.g.,
+                    //   .pl-large--1-1
+                    .pl-#{$breakpoint-name}--#{$columns}-#{$spaces} {
+                        padding-left: grid-size(
+                            #{$columns},
+                            #{$spaces});
+                    }
+                    
+                    // Right padding - e.g.,
+                    //   .pr-large--1-1
+                    .pr-#{$breakpoint-name}--#{$columns}-#{$spaces} {
+                        padding-right: grid-size(
+                            #{$columns},
+                            #{$spaces});
+                    }
+                }
+            }
+        }
+    }
+}

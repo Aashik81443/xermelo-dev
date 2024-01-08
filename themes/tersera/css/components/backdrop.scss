@@ -1,0 +1,15 @@
+// Backdrop that appears beneath the mobile
+// header menu & ISI tray when opened
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#000, 0.375);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    z-index: $z-index-header-isi-open;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-backdrop-filter: blur(5px);
+}

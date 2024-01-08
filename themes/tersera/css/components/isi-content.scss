@@ -1,0 +1,35 @@
+.isi {
+    padding-top: 2rem;
+    
+    @include media(">=small") {
+        padding-top: 3rem;
+    }
+
+    h3 {
+        // This is to avoid overlapping with the tray button,
+        // and to avoid having the header wrap differently
+        // in the tray vs. on-page
+        padding-right: 4rem;
+    }
+
+    // Crossfade container for collapsed & expanded content
+    > div {
+        position: relative;
+    }
+
+    .isi__collapsed-content,
+    .isi__expanded-content {
+        // During crossfades, these are positioned absolutely
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .isi__expanded-content {
+        padding-bottom: 5rem;
+    
+        @include media(">=small") {
+            padding-bottom: 6rem;
+        }
+    }
+}

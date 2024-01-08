@@ -1,0 +1,28 @@
+#isi {
+    margin-top: 5rem;
+    box-shadow: 0 -3px 8px 0 rgba(#000, 0.1);
+
+    // This is to clip out the box-shadow at the top of the submenu
+    clip-path: polygon(0 -2rem, 100% -2rem, 100% 100%, 0 100%);
+    
+    @include media(">=small") {
+        margin-top: 6rem;
+    }
+    
+    // EDIT: This doesn't work in Drupal since this lies in a different
+    // block than that which contains all the page content above it
+    // section:not(.references) + & {
+    //     // Larger margin than usual above the ISI, unless the preceeding section was references
+    //     .grid {
+    //         margin-top: 8rem;
+
+    //         @include media(">=small") {
+    //             margin-top: 9rem;
+    //         }
+    //     }
+    // }
+
+    .isi__collapsed-content {
+        display: none;
+    }
+}

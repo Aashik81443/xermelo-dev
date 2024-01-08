@@ -1,0 +1,115 @@
+/* Content that would be obscured by the header */
+#user-login-form,
+#node-page-layout-builder-form,
+#edit-actions,
+#layout-builder-discard-changes {
+    width: calc(100% - 2*var(--grid-gutter-width));
+    max-width: calc(1344px - (2 * 2rem));
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-home {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+/* Keep the fixed toolbar above our site-specific UI elements */
+/* body.toolbar-fixed .toolbar-oriented .toolbar-bar { */
+.toolbar-oriented .toolbar-bar {
+    z-index: 9101;
+}
+
+/* Layout builder buttons */
+.dialog-off-canvas-main-canvas .vertical-tabs__menu {
+    margin: -1px 0 -1px -15em;
+}
+
+.dialog-off-canvas-main-canvas .vertical-tabs__menu-item {
+    padding-left: 0;
+}
+
+.dialog-off-canvas-main-canvas .vertical-tabs__menu-item::before {
+    display: none;
+}
+
+.dialog-off-canvas-main-canvas .vertical-tabs__menu-item a {
+    text-decoration: none;
+}
+
+.contextual {
+    z-index: 9100;
+}
+
+.contextual.open {
+    z-index: 9101;
+}
+
+.contextual-links > li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.contextual-links > li::before {
+    display: none;
+}
+
+.contextual-links > li a,
+.contextual-links > li a:hover,
+.contextual-links > li a:active,
+.contextual-links > li a:visited {
+    font-weight: bold !important;
+    text-decoration: none !important;
+}
+
+.contextual-links > li a:hover {
+    text-decoration: underline !important;
+}
+
+/* The button associated with editing the page */
+main > *[id ^= "block-"][id $= "-content"] > article:first-of-type > .contextual {
+    top: 2px;
+    right: 35px;
+}
+
+main > *[id ^= "block-"][id $= "-content"] > article:first-of-type > .contextual .trigger {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    border-color: #999;
+}
+
+main > *[id ^= "block-"][id $= "-content"] > article:first-of-type > .contextual.open .trigger {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-color: transparent;
+}
+
+main > *[id ^= "block-"][id $= "-content"] > article:first-of-type > .contextual  .contextual-links {
+    border-color: #999;
+}
+
+/* Layout builder modals */
+body > .ui-dialog {
+    z-index: 9100;
+}
+
+/* Float Drupal messages */
+main > div[data-drupal-messages] {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 1rem 2rem;
+    font-weight: bold;
+    background-color: #fff;
+    border: solid hotpink 4px;
+    border-radius: 2rem;
+    z-index: 9100;
+    pointer-events: none;
+    box-shadow:
+        0px 0px 16px rgba(255, 255, 255, 1),
+        0px 0px 24px rgba(255, 255, 255, 1);
+}
