@@ -37,10 +37,7 @@ $grid-desktop-num-spaces: 11;
 $mobile-min-width: 320px;
 
 // Max content width
-$desktop-max-width: calc(
-    #{map-get($breakpoints, "x-large")} -
-    (2 * 2rem)
-);
+$desktop-max-width: calc(#{map-get($breakpoints, "x-large")} - (2 * 2rem));
 
 /*
     Properties
@@ -55,7 +52,7 @@ $desktop-max-width: calc(
 
     // Space between columns within the grid
     --grid-column-spacing: 2rem;
-    
+
     @include media(">=small") {
         // Desktop overrides
         --grid-gutter-width: 2rem;
@@ -69,29 +66,10 @@ $desktop-max-width: calc(
 // number of columns and spaces given the layout of the
 // element's container, as defined by the CSS variables
 // "--grid-parent-columns" and "--grid-parent-spaces"
-@function grid-size(
-    $columns,
+@function grid-size($columns,
     $spaces,
 ) {
-    @return calc(
-        (
-            (
-                100% -
-                (
-                    var(--grid-column-spacing) *
-                    var(--grid-parent-spaces)
-                )
-            ) *
-            (
-                #{$columns} /
-                var(--grid-parent-columns)
-            )
-        ) +
-        (
-            var(--grid-column-spacing) *
-            #{$spaces}
-        )
-    );
+    @return calc(((100% - (var(--grid-column-spacing) * var(--grid-parent-spaces))) * (#{$columns} / var(--grid-parent-columns))) + (var(--grid-column-spacing) * #{$spaces}));
 }
 
 //container max width
@@ -105,7 +83,7 @@ $container-max-widths-xxl: 1360px;
 $container-padding: 0 24px;
 
 .container {
-    margin: auto;
+    margin: 0 auto;
     width: 100%;
     padding: $container-padding;
 

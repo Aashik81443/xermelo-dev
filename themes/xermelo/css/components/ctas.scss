@@ -1,7 +1,8 @@
 .ctas,
 .eop-callouts {
+    padding-top: 80px;   
     .grid {
-        > div {
+        >div {
             border-bottom-color: $color-green;
 
             h5 {
@@ -15,6 +16,82 @@
                 font-size: 3rem;
                 line-height: 4rem;
                 color: $color-brand-purple;
+            }
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        .col {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            @include media(">=x-large") {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+
+            &:last-child{
+                margin-bottom: 0;
+                @include media(">=medium") {              
+                    margin-bottom: 32px;
+                }
+            }
+        }
+    }
+
+    .cta-card {
+        border-bottom: 12px solid $color-green;
+        padding: 10px 32px;
+        background-color: $color-dark-purple;
+        position: relative;
+        text-align: center;
+        height: 100%;
+
+        .eyebrow {
+            color: $color-white;
+
+            &:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        h5 {
+            &:after {
+                background-color: $color-green;
+            }
+        }
+
+        p {
+            font-family: $font-sans-condensed;
+            font-size: 3rem;
+            line-height: 4rem;
+            color: $color-white;
+        }
+
+        .button--solid {
+            color: $color-brand-purple;
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+            &::before {
+                background-color: $color-white;
+                border-color: $color-green;
+
             }
         }
     }

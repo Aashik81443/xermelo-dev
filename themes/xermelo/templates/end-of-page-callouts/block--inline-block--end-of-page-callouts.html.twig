@@ -1,0 +1,11 @@
+{% set classes = [
+  'eop-callouts'
+] %}
+
+<section{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <div class="container">
+    {{ content }}
+  </div>
+</section>

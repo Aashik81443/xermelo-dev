@@ -1,0 +1,21 @@
+{% set classes = [
+  'homepage-hero'
+] %}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div class="container">
+        <div class="homepage-hero__content">
+            <div class="row">
+                <div class="col-left">
+                    {{ content }}
+                </div>
+                <div class="col-right">
+                    <img src="/themes/xermelo/images/pages/home/It's-time-stamp.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
