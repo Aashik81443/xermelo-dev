@@ -5,19 +5,20 @@
 
 // Media query sizes
 $breakpoints: (
+    "small": 576px,
     // After this we're in tablet mode
-    "small": 768px,
+    "medium": 768px,
     // After this we're in the smallish
     // desktop mode
-    "medium": 960px,
+    "large": 992px,
     // After this we're in the largeish desktop mode
-    "large": 1200px,
+    "x-large": 1200px,
     // After this the content hits its 1344px
     // max-width
-    "x-large": 1344px,
-    // Some backgrounds don't work stretched beyond these
     "xx-large": 1440px,
-    "xxx-large": 1920px,
+    // Some backgrounds don't work stretched beyond these
+    // "xx-large": 1440px,
+    "xxx-large": 1600px,
 );
 
 // Settings - these are implemented as SASS variables
@@ -91,4 +92,40 @@ $desktop-max-width: calc(
             #{$spaces}
         )
     );
+}
+
+//container max width
+$container-max-widths-sm: 540px !default;
+$container-max-widths-md: 720px !default;
+$container-max-widths-lg: 960px !default;
+$container-max-widths-xl: 1140px !default;
+$container-max-widths-xxl: 1360px;
+
+//container padding
+$container-padding: 0 24px;
+
+.container {
+    margin: auto;
+    width: 100%;
+    padding: $container-padding;
+
+    @include media(">=small") {
+        max-width: $container-max-widths-sm;
+    }
+
+    @include media(">=medium") {
+        max-width: $container-max-widths-md;
+    }
+
+    @include media(">=large") {
+        max-width: $container-max-widths-lg;
+    }
+
+    @include media(">=x-large") {
+        max-width: $container-max-widths-xl;
+    }
+
+    @include media(">=xx-large") {
+        max-width: $container-max-widths-xxl;
+    }
 }

@@ -1,18 +1,88 @@
 footer {
-    font-size: 14px;
-    line-height: 24px;
+padding-bottom: 48px;
 
-    .grid {
+@include media(">=medium") {
+  padding-bottom: 29px ;
+}
+    .footer-content {
+        border-top: 2px solid $color-dark-gray-500;
+        padding-top: 30px;
+
         ul.footer--links {
             border-color: #979797;
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 290px;
+
+            @include media(">=small") {
+                max-width: 100%;
+            }
 
             li {
+                padding-left: 0;
+                margin-right: 15px;
+
+                @include media(">=small") {
+                    margin-right: 24px;
+                    border-right: none;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &::before {
+                    display: none;
+                }
+
+                a {
+                    font-size: 14px;
+                    border-right: 1px solid $color-dark-gray-500;
+                    padding-right: 15px;
+                    line-height: 24px;
+
+                    @include media(">=small") {
+                        padding-right: 0;
+                        border-right: none;
+                    }
+
+                    @include media(">=large") {
+                        font-size: 16px;
+                        line-height: 18.75px;
+
+                    }
+
+                }
+
                 a,
                 a:hover,
                 a:active,
                 a:visited {
                     white-space: nowrap;
                 }
+            }
+        }
+
+        .bottom-info {           
+            font-size: 14px;
+            line-height: 20px;
+
+            @include media(">=medium") {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .footer--tersera-logo {
+                max-width: 160px;
+                margin-top: 5px;
+                
+                @include media(">=medium") {
+                    max-width: 192px;
+                  margin-top: 0;
+                }
+
             }
         }
     }
