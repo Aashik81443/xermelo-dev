@@ -1,42 +1,120 @@
-
 // home
 
 
-    .block-icon{
-        padding-top: 80px;
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;        
-            margin-left: -16px;
-            margin-right: -16px;
-    
-            .col {
-                flex: 0 0 100%;
-                max-width: 100%;
-                padding-left: 16px;
-                padding-right: 16px;
-                margin-bottom: 80px;
-     
+.block-icon {
+    padding-top: 80px;
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        .col {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 80px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            @include media(">=large") {
+                flex: 0 0 40%;
+                max-width: 40%;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+
                 @include media(">=medium") {
-                    flex: 0 0 50%;
-                    max-width: 50%;
-                }
-     
-                @include media(">=large") {
-                    flex: 0 0 40%;
-                    max-width: 40%;
-                }
-                      
-                &:last-child{
-                    margin-bottom: 0;
-                    @include media(">=medium") {              
-                        margin-bottom: 80px;
-                    }
+                    margin-bottom: 80px;
                 }
             }
         }
     }
+}
+
+.section-text-image {
+    padding-top: 60px;
+
+    @include media(">=large") {
+        padding-top: 0;
+    }
+    .content {
+        background: linear-gradient(270deg, #F6F6F6 0%, #F6F6F6 16.56%, #F6F6F6 44.51%, #F6F6F6 67.28%, #F6F6F6 92.55%);
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-left: -16px;
+            margin-right: -16px;
+
+            flex-direction: row-reverse;
+
+            @include media(">=large") {
+                flex-direction: row;
+            }
+
+
+            .col-left {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+
+                @include media(">=large") {
+                    flex: 0 0 40%;
+                    max-width: 40%;
+                }
+
+                .media {
+                    height: 100%;
+
+                    img {
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+            }
+
+            .col-right {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+
+                @include media(">=large") {
+                    flex: 0 0 60%;
+                    max-width: 60%;
+                }
+
+                .info {
+                    max-width: 633px;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+                    padding-left: 24px;
+                    padding-right: 24px;
+
+                    @include media(">=x-large") {
+                        padding-top: 97px;
+                        padding-bottom: 97px;
+                        padding-left: 50px;
+                        padding-right: 50px;
+                    }
+
+                }
+
+            }
+        }
+    }
+}
 
 
 /*
@@ -48,7 +126,7 @@
         display: block;
         width: 85%;
         margin: 2rem auto;
-        
+
         @include media(">=small") {
             width: auto;
             margin: 0 0 2rem;
@@ -62,7 +140,7 @@
         display: block;
         margin: 0 auto 2rem;
         max-width: 171px;
-        
+
         @include media(">=small") {
             margin: 0;
             max-width: 100%;
@@ -79,7 +157,7 @@
         display: block;
         width: 85%;
         margin: 2rem auto 0;
-        
+
         @include media(">=small") {
             width: auto;
             margin: 0;
@@ -92,7 +170,7 @@
         display: block;
         width: 75%;
         margin: 2rem auto 0;
-        
+
         @include media(">=small") {
             width: auto;
             margin: 0;
@@ -109,7 +187,7 @@
         display: block;
         margin: 0 auto;
         max-width: 328px;
-        
+
         @include media(">=small") {
             display: none;
         }
@@ -121,7 +199,7 @@
         display: block;
         margin: 0 auto;
         max-width: 283px;
-        
+
         @include media(">=small") {
             margin: 0;
             max-width: 100%;
@@ -140,19 +218,20 @@
     }
 
     // Main copy
-    > .grid.image-callout {
+    >.grid.image-callout {
         @include media(">=small") {
             padding-bottom: 3rem;
         }
-        
+
         &.image-callout--right-image {
+
             // Added to avoid copy interacting with these images
-            > div:not(.image-callout--image) {
+            >div:not(.image-callout--image) {
                 &:before {
                     @include media(">=small") {
                         height: calc(100% + 8rem);
                     }
-                    
+
                     @include media(">=large") {
                         height: calc(100% + 13rem);
                     }
@@ -162,9 +241,9 @@
     }
 
     // Footnote
-    > div:nth-of-type(2) {
+    >div:nth-of-type(2) {
         margin-top: 3rem;
-        
+
         @include media(">=small") {
             margin-top: 4rem;
         }
@@ -175,7 +254,7 @@
     // Comps have no margin between the initial form and the ISI, which is unique
     // to this page
     margin-bottom: -5rem;
-    
+
     @include media(">=small") {
         margin-bottom: -6rem;
     }
@@ -187,12 +266,15 @@
 }
 
 #sign-up .form--cne-sign-up {
+
     // Dropdown error message is split for one of them (X on right, copy underneath)
     .form__error--split {
         @include media(">=small") {
             margin-top: 1rem;
             padding-left: 0;
-            &::before, &::after {
+
+            &::before,
+            &::after {
                 top: unset;
                 left: unset;
                 bottom: 3.4rem;
@@ -208,7 +290,7 @@
 
 .how-to-get-xermelo--copay {
     text-align: center;
-    
+
     @include media(">=small") {
         text-align: left;
     }
@@ -218,7 +300,7 @@
         display: block;
         margin: 0 auto;
         width: 168px;
-        
+
         @include media(">=small") {
             width: 209px;
         }
@@ -252,7 +334,7 @@
         &:not(:last-of-type) {
             margin-bottom: 5rem;
         }
-    
+
         ul {
             margin-top: 1rem;
         }
