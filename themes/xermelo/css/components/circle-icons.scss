@@ -9,7 +9,7 @@
     align-items: center;
     padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
     min-height: var(--circle-icon-width);
-    
+
     @include media(">=small") {
         --circle-icon-width: 10rem;
     }
@@ -64,7 +64,7 @@
             padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
             padding-top: 0;
         }
-        
+
         &:before {
             top: 0;
             left: 50%;
@@ -93,7 +93,7 @@
             padding-left: 0;
             padding-top: calc(var(--circle-icon-width) + 2rem);
         }
-        
+
         &:before {
             @include media(">=small") {
                 top: 0;
@@ -101,7 +101,7 @@
                 transform: translate(-50%, 0);
             }
         }
-    }
+    }    
 
     /*
         Icons
@@ -223,6 +223,17 @@
     &.circle-icon--target {
         &:before {
             background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Target@2x.png");
+        }
+    }
+}
+
+.card-icon {
+    --circle-icon-width:9rem;
+    @include media(">=medium") {
+        --circle-icon-width:10rem;
+        p,
+        a {
+            margin-left: calc(var(--circle-icon-width) + var(--grid-column-spacing)) !important;
         }
     }
 }

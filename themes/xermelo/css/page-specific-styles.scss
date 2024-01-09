@@ -1,3 +1,44 @@
+
+// home
+
+
+    .block-icon{
+        padding-top: 80px;
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;        
+            margin-left: -16px;
+            margin-right: -16px;
+    
+            .col {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+                margin-bottom: 80px;
+     
+                @include media(">=medium") {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+     
+                @include media(">=large") {
+                    flex: 0 0 40%;
+                    max-width: 40%;
+                }
+                      
+                &:last-child{
+                    margin-bottom: 0;
+                    @include media(">=medium") {              
+                        margin-bottom: 80px;
+                    }
+                }
+            }
+        }
+    }
+
+
 /*
     /what-is-carcinoid-syndrome
 */
