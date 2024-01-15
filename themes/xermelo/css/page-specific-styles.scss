@@ -130,6 +130,7 @@
 .block-counter-card {
     padding-top: 60px;
     padding-bottom: 28px;
+
     .row {
         display: flex;
         flex-wrap: wrap;
@@ -199,6 +200,109 @@
                 margin-top: 60px;
             }
         }
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        flex-direction: row-reverse;
+
+        @include media(">=large") {
+            flex-direction: row;
+        }
+
+
+        .col-left {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @include media(">=large") {
+                flex: 0 0 60%;
+                max-width: 60%;
+            }
+
+            .info {
+
+                .card-icon-wrapper {
+                    margin-top: 30px;
+
+                    .card-icon {
+                        margin-bottom: 30px;
+
+                        @include media(">=large") {
+                            margin-bottom: 42px;
+                        }
+
+                    }
+                }
+
+                .btn-wrap {
+                    margin-top: 70px;
+
+                    @include media(">=large") {
+                        margin-top: 60px;
+                    }
+                }
+
+            }
+
+        }
+
+        .col-right {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @include media(">=large") {
+                flex: 0 0 40%;
+                max-width: 40%;
+            }
+
+        }
+    }
+
+    .media {
+        height: 100%;
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        .dis-text {
+            position: absolute;
+            bottom: 7px;
+            right: 15px;
+            font-size: 12px;
+            color: $color-dark-gray;
+            font-weight: 400;
+        }
+
+        &.desktop-only {
+            display: none;
+
+            @include media(">=large") {
+                display: block;
+            }
+        }
+
+        &.mobile-only {
+            display: block;
+            margin-top: 38px;
+
+            @include media(">=large") {
+                display: none;
+            }
+        }
+
+
     }
 
     &--alt {

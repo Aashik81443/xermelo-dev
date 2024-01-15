@@ -11,6 +11,7 @@
     min-height: var(--circle-icon-width);
     font-size: 30px;
     line-height: 36px;   
+    font-weight: 700;
 
     @include media(">=small") {
         --circle-icon-width: 10rem;
