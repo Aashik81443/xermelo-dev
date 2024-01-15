@@ -9,6 +9,8 @@
     align-items: center;
     padding-left: calc(var(--circle-icon-width) + var(--grid-column-spacing));
     min-height: var(--circle-icon-width);
+    font-size: 30px;
+    line-height: 36px;   
 
     @include media(">=small") {
         --circle-icon-width: 10rem;
@@ -229,6 +231,9 @@
 
 .card-icon {
     --circle-icon-width:9rem;
+    h3{
+         
+    }
     @include media(">=medium") {
         --circle-icon-width:10rem;
         p,

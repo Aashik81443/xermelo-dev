@@ -1,60 +1,120 @@
 // Image columns seen on "/what-is-carcinoid-syndrome"
 .image-cell {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 3rem;
-    padding-left: grid-size(1.5, 1);
+    padding: 8rem 3rem 6rem 3rem;
     background-color: #fff;
+    height: 100%;
+    position: relative;
     
-    @include media(">=small") {
+    @include media(">=medium") {
+        padding: 6rem 3rem;
+
+    }
+
+    @include media(">=large") {
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        justify-content: center;
         font-family: $font-sans-condensed;
         font-size: 20px;
         line-height: 24px;
         color: $color-brand-purple;
+        padding-left: 130px;
     }
 
-    &:before {
-        content: "";
+    &::before {
         position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: grid-size(1.5, 1);
-        height: 100%;
-        background-size: contain;
-        background-position: center;
+        content: '5';
+        top: 20px;
+        left: 20px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: $color-green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        line-height: 18px;
+        font-weight: 900;
+        color: $color-black;
+
+        @include media(">=large") {
+            width: 57px;
+            height: 57px;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            line-height: 24px;
+        }
+
     }
+
+    .icon {
+        text-align: center;
+
+        img {
+            @include media("<=large") {
+                max-width: 30%;
+                margin: 0 auto;
+
+            }
+        }
+
+        @include media(">=large") {
+            width: 26%;
+            margin-right: 30px;
+
+        }
+    }
+
+    .content {
+        font-size: 18px;
+        line-height: 28px;
+        color: $color-dark-gray;
+
+        @include media("<=large") {
+            margin-top: 24px;
+
+        }
+
+        @include media(">=large") {
+            width: 74%;
+            line-height: 32px;
+
+        }
+    }
+
 
     /*
         Images
     */
-    &.image-cell--net {
-        &:before {
-            background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-NET@2x.png");
-            transform: scale(0.68);
-        }
-    }
+    // &.image-cell--net {
+    //     &:before {
+    //         background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-NET@2x.png");
+    //         transform: scale(0.68);
+    //     }
+    // }
 
-    &.image-cell--serotonin {
-        &:before {
-            background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-Serotonin@2x.png");
-            transform: scale(0.84);
-        }
-    }
+    // &.image-cell--serotonin {
+    //     &:before {
+    //         background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-Serotonin@2x.png");
+    //         transform: scale(0.84);
+    //     }
+    // }
 
-    &.image-cell--digestive {
-        &:before {
-            background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-Digestive@2x.png");
-            transform: scale(0.63);
-        }
-    }
+    // &.image-cell--digestive {
+    //     &:before {
+    //         background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-Digestive@2x.png");
+    //         transform: scale(0.63);
+    //     }
+    // }
 
-    &.image-cell--tumor-cell {
-        &:before {
-            background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-Tumor-Cell@2x.png");
-            transform: scale(0.83);
-        }
-    }
+    // &.image-cell--tumor-cell {
+    //     &:before {
+    //         background-image: url("/themes/xermelo/images/components/image-cell/XER-Graphic-Tumor-Cell@2x.png");
+    //         transform: scale(0.83);
+    //     }
+    // }
 }

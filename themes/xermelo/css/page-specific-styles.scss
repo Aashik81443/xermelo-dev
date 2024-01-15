@@ -45,6 +45,7 @@
     @include media(">=large") {
         padding-top: 0;
     }
+
     .content {
         background: linear-gradient(270deg, #F6F6F6 0%, #F6F6F6 16.56%, #F6F6F6 44.51%, #F6F6F6 67.28%, #F6F6F6 92.55%);
 
@@ -82,7 +83,7 @@
                         object-fit: cover;
                     }
 
-                    .dis-text{
+                    .dis-text {
                         position: absolute;
                         bottom: 7px;
                         right: 15px;
@@ -126,10 +127,90 @@
     }
 }
 
+.block-counter-card {
+    padding-top: 60px;
+    padding-bottom: 28px;
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+        counter-reset: section;
+
+
+        .col {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            .image-cell {
+                &::before {
+                    counter-increment: section;
+                    content: counter(section, decimal);
+                }
+            }
+
+        }
+    }
+}
+
 
 /*
     /what-is-carcinoid-syndrome
 */
+
+.block-content-wrapper {
+    padding-top: 60px;
+    padding-bottom: 30px;
+
+    @include media(">=large") {
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .content {
+        max-width: 976px;
+
+        h2 {
+            font-size: 32px;
+            line-height: 38px;
+            margin-bottom: 30px;
+
+            @include media(">=large") {
+                font-size: 44px;
+                line-height: 56px;
+
+            }
+
+        }
+
+        .btn-wrap {
+            margin-top: 70px;
+
+            @include media(">=large") {
+                margin-top: 60px;
+            }
+        }
+    }
+
+    &--alt {
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        @include media(">=large") {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+}
 
 .what-is-carcinoid-syndrome--image-sidebar {
     img {
