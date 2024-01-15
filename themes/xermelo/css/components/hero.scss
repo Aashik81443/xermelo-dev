@@ -1,51 +1,78 @@
 .hero {
-    background-color: $color-brand-purple;
+    background-color: $color-dark-purple-100;
+    background-image: url("/themes/xermelo/images/global/Blueprint-purple-SM.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: block;
-        width: 50%;
-        height: 100%;
-        background-image: url("/themes/xermelo/images/global/Blueprint-purple.png");
-        background-size: cover;
-        background-position: left top;
-        pointer-events: none;
-    
-        @include media(">=small") {
-            right: auto;
-            left: 50%;
-            width: 50%;
-            background-size: auto 292px;
-            background-position: 70px -68px;
-        }
+    @include media(">=medium") {
+        background-image: url("/themes/xermelo/images/global/Blueprint-purple-LG.jpg");
+        background-position: right;
     }
+
+    // &:before {
+    //     content: "";
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     display: block;
+    //     width: 50%;
+    //     height: 100%;
+    //     background-size: cover;
+    //     background-position: left top;
+    //     pointer-events: none;
+
+    //     @include media(">=small") {
+    //         right: auto;
+    //         left: 50%;
+    //         width: 50%;
+    //         background-size: auto 292px;
+    //         background-position: 70px -68px;
+    //     }
+    // }
 
     .grid {
         padding-top: 5rem;
         padding-bottom: 4rem;
-        
+        margin-left: 0;
+        margin-right: 0;
+
         @include media(">=small") {
             padding-top: 6rem;
             padding-bottom: 5rem;
         }
 
+        @include media(">=x-large") {
+            padding-top: 9rem;
+            padding-bottom: 8rem;
+        }
+
         h1 {
             color: #fff;
+            font-size: 42px;
+            line-height: 48px;
+
+            @include media(">=large") {
+                font-size: 54px;
+                line-height: 58px;
+            }
+
+            @include media(">=x-large") {
+                font-size: 64px;
+                line-height: 72px;
+            }
         }
     }
 
     // No margin between .hero and the following section
-    & + section {
+    &+section {
         margin-top: 0;
 
         // ...but the first .grid within it has a top margin that's
         // larger than the default in-between sections. This is so
         // it can be overrided by certain initial sections, like those
         // that have a background image flush with the hero
-        > .grid:first-child {
+        >.grid:first-child {
             margin-top: 6rem;
 
             @include media(">=small") {
