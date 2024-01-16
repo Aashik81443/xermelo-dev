@@ -112,3 +112,11 @@ $container-padding: 0 24px;
     max-width: 1088px;
     margin: 0 auto;
 }
+
+.no-smDown-container {
+    @include media("<=medium") {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}

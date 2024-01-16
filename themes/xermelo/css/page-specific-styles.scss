@@ -193,6 +193,19 @@
 
         }
 
+        h3 {
+            font-size: 24px;
+            line-height: 28px;
+            font-weight: 700;
+
+            @include media(">=large") {
+                font-size: 30px;
+                line-height: 36px;
+
+            }
+
+        }
+
         .btn-wrap {
             margin-top: 70px;
 
@@ -303,6 +316,71 @@
         }
 
 
+    }
+
+    .row-type-1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        .col-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+        }
+    }
+    .row-type-2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        .col-left {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin-bottom: 0;
+            }
+
+        }
+        .col-right {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @include media(">=medium") {
+                flex: 0 0 30%;
+                max-width: 30%;
+            }
+
+        }
+    }
+
+    .tile-icon--wrapper{
+        margin-top: 40px;
+        margin-bottom: 65px;
+        
+        @include media(">=medium") {
+            margin-bottom: 100px;
+        }
     }
 
     &--alt {

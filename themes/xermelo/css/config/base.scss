@@ -207,6 +207,7 @@ a:hover {
 }
 
 ul {
+    margin-top: 20px;
     >li {
         &:before {
             color: $color-brand-purple;
@@ -218,6 +219,16 @@ ul {
             &:before {
                 color: $color-green;
             }
+        }
+    }
+
+    &.list--no-margin {
+        li {
+         margin-bottom: 10px !important;
+
+         &:last-child{
+            margin-bottom: 0 !important;
+         }
         }
     }
 }
@@ -270,4 +281,8 @@ ul {
         font-size: 24px !important;
         line-height: 30px !important;
     }
+}
+
+.pb-0{
+    padding-bottom: 0 !important;
 }
