@@ -163,6 +163,40 @@
     }
 }
 
+.section-co-pay {
+    padding-top: 60px;
+    padding-bottom: 28px;  
+    background-color: $color-lighter-gray;
+    margin-bottom: 72px;
+
+    .content{
+        p{
+            font-size: 18px;
+            line-height: 28px;
+        }
+    }
+
+    .media {
+        @include media("<=medium") {
+            margin-bottom: 32px;
+        }
+        .tag-text{
+            display: block;
+            text-align: right;
+            padding-right: 20px;
+        }
+    }
+
+    .footnote{
+        max-width: 640px;
+        
+        @include media(">=large") {
+            margin-top: -25px;
+
+        }
+    }
+}
+
 
 /*
     /what-is-carcinoid-syndrome
@@ -309,6 +343,7 @@
         &.mobile-only {
             display: block;
             margin-top: 38px;
+            margin-bottom: 38px;
 
             @include media(">=large") {
                 display: none;
@@ -369,6 +404,40 @@
             @include media(">=medium") {
                 flex: 0 0 30%;
                 max-width: 30%;
+            }
+
+        }
+    }
+    .row-type-3 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        .col-left {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin-bottom: 0;
+            }
+
+        }
+        .col-right {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @include media(">=medium") {
+                flex: 0 0 40%;
+                max-width: 40%;
             }
 
         }

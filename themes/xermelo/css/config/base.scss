@@ -273,6 +273,16 @@ ul {
 .footnote {
     font-size: 14px;
     line-height: 16px;
+    p {
+        position: relative;
+        padding-left: 8px;
+
+        .asteric {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
 }
 
 
