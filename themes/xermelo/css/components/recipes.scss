@@ -2,34 +2,17 @@
 .recipe-link {
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: end;
     min-height: 184px;
-    padding-left: grid-size(2, 2);
-        
-    @include media(">=small") {
-        min-height: 232px;
-        padding-left: grid-size(3, 3);
-    }
-    
-    @include media(">=medium") {
-        padding-left: grid-size(2, 2);
-    }
+     
 
     img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: grid-size(2, 1);
-        height: 100%;
-        object-fit: cover;
+        margin-right: 20px;      
+        max-width: 138px;    
         
-        @include media(">=small") {
-            width: grid-size(3, 2);
-        }
-        
-        @include media(">=medium") {
-            width: grid-size(2, 1);
+        @include media(">=large") {
+            margin-right: 25px;      
+            max-width: 192px;
         }
     }
 

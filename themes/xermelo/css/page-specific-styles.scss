@@ -165,12 +165,12 @@
 
 .section-co-pay {
     padding-top: 60px;
-    padding-bottom: 28px;  
+    padding-bottom: 28px;
     background-color: $color-lighter-gray;
     margin-bottom: 72px;
 
-    .content{
-        p{
+    .content {
+        p {
             font-size: 18px;
             line-height: 28px;
         }
@@ -180,19 +180,36 @@
         @include media("<=medium") {
             margin-bottom: 32px;
         }
-        .tag-text{
+
+        .tag-text {
             display: block;
             text-align: right;
             padding-right: 20px;
         }
     }
 
-    .footnote{
+    .footnote {
         max-width: 640px;
-        
+
         @include media(">=large") {
             margin-top: -25px;
 
+        }
+    }
+}
+
+.block-diet-and-nutrition {
+    .card-icon {
+        margin-bottom: 32px;
+
+        @include media(">=large") {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            @include media(">=large") {
+                margin-bottom: 0;
+            }
         }
     }
 }
@@ -374,6 +391,7 @@
 
         }
     }
+
     .row-type-2 {
         display: flex;
         flex-wrap: wrap;
@@ -395,6 +413,7 @@
             }
 
         }
+
         .col-right {
             flex: 0 0 100%;
             max-width: 100%;
@@ -408,6 +427,7 @@
 
         }
     }
+
     .row-type-3 {
         display: flex;
         flex-wrap: wrap;
@@ -429,6 +449,7 @@
             }
 
         }
+
         .col-right {
             flex: 0 0 100%;
             max-width: 100%;
@@ -443,10 +464,83 @@
         }
     }
 
-    .tile-icon--wrapper{
+    .row-type-4 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-top: 10px;
+
+        @include media(">=large") {
+            margin-left: -30px;
+            margin-right: -30px;
+
+        }
+
+        .col-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            @include media(">=large") {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+        }
+    }
+
+    .row-type-5 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: -16px;
+        margin-right: -16px;
+        align-items: center;
+
+        .col-left {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 32px;
+
+            @include media(">=medium") {
+                flex: 0 0 60%;
+                max-width: 60%;
+                margin-bottom: 0;
+            }
+
+        }
+
+        .col-right {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @include media(">=medium") {
+                flex: 0 0 35%;
+                max-width: 35%;
+                text-align: right;
+            }
+           
+
+        }
+    }
+
+    .tile-icon--wrapper {
         margin-top: 40px;
         margin-bottom: 65px;
-        
+
         @include media(">=medium") {
             margin-bottom: 100px;
         }
