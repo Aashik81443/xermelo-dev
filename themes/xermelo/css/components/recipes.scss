@@ -4,14 +4,14 @@
     display: flex;
     align-items: end;
     min-height: 184px;
-     
+
 
     img {
-        margin-right: 20px;      
-        max-width: 138px;    
-        
+        margin-right: 20px;
+        max-width: 138px;
+
         @include media(">=large") {
-            margin-right: 25px;      
+            margin-right: 25px;
             max-width: 192px;
         }
     }
@@ -23,6 +23,12 @@
 
 // Content of actual recipes
 .recipe {
+    padding-top: 65px;
+
+    @include media(">=large") {
+        padding-top: 100px;
+    }
+
     h3 {
         margin-top: 5rem;
     }
