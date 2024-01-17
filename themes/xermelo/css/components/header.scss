@@ -169,7 +169,7 @@ header {
                                 line-height: 4rem;
                                 font-weight: bold;
                                 text-decoration: none;
-                                color: $color-dark-purple;
+                                color: $color-brand-purple;
                                 margin-bottom: 6px;
 
 
@@ -199,7 +199,7 @@ header {
                                             line-height: 32px;
                                             font-weight: normal;
                                             text-decoration: none;
-                                            color: $color-dark-purple;
+                                            color: $color-brand-purple;
 
                                             @include media(">=small") {
                                                 font-family: $font-sans-condensed;
