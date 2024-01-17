@@ -214,6 +214,14 @@
     }
 }
 
+.block-404,
+.block-site-map {
+    padding-top: 80px;
+
+    @include media(">=large") {
+        padding-top: 100px;
+    }
+}
 
 /*
     /what-is-carcinoid-syndrome
@@ -532,7 +540,7 @@
                 max-width: 35%;
                 text-align: right;
             }
-           
+
 
         }
     }
