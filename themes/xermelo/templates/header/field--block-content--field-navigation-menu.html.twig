@@ -1,0 +1,14 @@
+<nav>
+    <div class="header__nav-scroll-container">
+        <div>
+            {% for item in items %}
+                {{ item.content }}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mobile-only header__nav-item">
+        <a href="/hcp" class="mobile-bottom-item">
+            For Healthcare Professionals
+        </a>
+    </div>
+</nav>

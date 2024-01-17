@@ -223,6 +223,29 @@
     }
 }
 
+.block-site-map {
+    ul{
+        li{
+            padding-left: 3.5rem;
+            color: $color-brand-purple;
+            font-weight: 700;
+            a{
+                color: inherit;
+                font-weight: 700;
+            }
+
+            ul{
+                li{
+                    font-weight: 400;
+                    a{
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
+
 /*
     /what-is-carcinoid-syndrome
 */

@@ -1,27 +1,50 @@
 // Xermelo header
 header {
+    @media only screen and (max-width: 991.98px) {
+        height: 88px;
+    }
+
     // Element that becomes fixed positioned
     .header__fixed-container {
+        @media only screen and (max-width: 991.98px) {
+            height: 88px;
+        }
+
         // Establishes sizing
         .grid {
+
+            margin: 0 auto !important;
+            width: 100% !important;
+            padding: 0 24px !important;
+
+            @include media(">=small") {
+                max-width: 540px !important;
+            }
+
+            @include media(">=medium") {
+                max-width: 720px !important;
+            }
+
+            @include media(">=large") {
+                max-width: 960px !important;
+            }
+
+            @include media(">=x-large") {
+                max-width: 1140px !important;
+            }
+
+            @include media(">=xx-large") {
+                max-width: 1360px !important;
+            }
+
             // Logo
             .header__site-logo {
                 position: absolute;
                 top: 1rem;
-                left: 0;
-                transform: translate(
-                    0,
-                    calc(
-                        var(--header-compression-progress) *
-                        (
-                            // This shifts the logo down slightly
-                            2px +
-                            (
-                                var(--header-compression) * 0.5
-                            )
-                        )
-                    )
-                );
+                left: 24px;
+                transform: translate(0,
+                        calc(var(--header-compression-progress) * ( // This shifts the logo down slightly
+                                2px + (var(--header-compression) * 0.5))));
                 display: block;
                 width: 224px;
                 height: 67px;
@@ -35,37 +58,33 @@ header {
 
                 @include media(">=small") {
                     top: 1.5rem;
-                    transform: translate(
-                        0,
-                        calc(
-                            var(--header-compression-progress) *
-                            (
-                                // This shifts the logo down slightly
-                                2px +
-                                (
-                                    var(--header-compression) * 0.5
-                                )
-                            )
-                        )
-                    );
+                    transform: translate(0,
+                            calc(var(--header-compression-progress) * ( // This shifts the logo down slightly
+                                    2px + (var(--header-compression) * 0.5))));
 
                     // Shrinking this so all the copy will fit at 768px
                     width: 200px;
                 }
-                
+
                 @include media(">=medium") {
                     top: 2rem;
                     width: 224px;
                     height: 67px;
                 }
-                
+
                 @include media(">=large") {
-                    left: grid-size(2, 2);
+                    left: 24px;
                 }
             }
-            
+
             // Hamburger
             .header__hamburger {
+
+                @media only screen and (max-width: 991.98px) {
+                    right: 40px;
+                    display: block !important;
+                }
+
                 span {
                     background-color: $color-brand-purple;
                 }
@@ -76,7 +95,7 @@ header {
                 right: 0;
                 font-size: 13px;
                 line-height: 3rem;
-                
+
                 @include media(">=large") {
                     right: grid-size(1, 1);
                 }
@@ -89,30 +108,71 @@ header {
                     }
                 }
             }
-            
+
             // Nav menu
-            > nav {
-                @include media(">=large") {
-                    right: grid-size(1, 1);
+            >nav {
+                @media only screen and (max-width: 991.98px) {
+                    display: none;
+                    padding-top: 24px;
+                    position: fixed;
+                    top: 88px;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 82.2vh;
                 }
 
+                @include media(">=large") {
+                    right: 24px;
+                }
+
+                &::after {
+                    @media only screen and (max-width: 991.98px) {
+                        display: none;
+                    }
+                }
+
+
+
                 .header__nav-scroll-container {
-                    > div {
+                    @media only screen and (max-width: 991.98px) {
+                        overflow-y: auto !important;
+                        overflow-x: auto !important;
+                        height: 100%;
+                    }
+
+                    >div {
+
+
+                        @media only screen and (max-width: 767.98px) {
+                            width: 100% !important;
+                            margin: 0 auto !important;
+                            padding: 0 24px !important;
+                            max-width: 540px !important;
+                        }
+
+                        @media only screen and (max-width: 991.98px) {
+                            max-width: 540px !important;
+                        }
+
                         // Individual nav items
-                        > div.header__nav-item {
+                        >div.header__nav-item {
+
                             // Submenu titles & top-level links
                             span,
-                            > a,
-                            > a:hover,
-                            > a:active,
-                            > a:visited {
+                            >a,
+                            >a:hover,
+                            >a:active,
+                            >a:visited {
                                 font-family: $font-sans;
-                                font-size: 18px;
+                                font-size: 20px;
                                 line-height: 4rem;
                                 font-weight: bold;
                                 text-decoration: none;
-                                color: $color-brand-purple;
-                                
+                                color: $color-dark-purple;
+                                margin-bottom: 6px;
+
+
                                 @include media(">=small") {
                                     font-family: $font-sans-condensed;
                                     font-size: 19px;
@@ -123,11 +183,13 @@ header {
                                     background-color: $color-green;
                                 }
                             }
-                            
+
                             // Submenus
-                            > div {
-                                > ul {
-                                    > li {
+                            >div {
+                                >ul {
+                                    >li {
+                                        margin-bottom: 6px;
+
                                         a,
                                         a:hover,
                                         a:active,
@@ -137,7 +199,7 @@ header {
                                             line-height: 32px;
                                             font-weight: normal;
                                             text-decoration: none;
-                                            color: $color-brand-purple;
+                                            color: $color-dark-purple;
 
                                             @include media(">=small") {
                                                 font-family: $font-sans-condensed;
@@ -147,6 +209,7 @@ header {
                                         }
 
                                         a {
+
                                             // Current item / hover indicator
                                             &:before {
                                                 background-color: $color-green;
@@ -167,7 +230,7 @@ header {
                             text-align: center;
                             background-color: $color-green;
                             border-radius: 1rem;
-                            
+
                             a,
                             a:hover,
                             a:active,
@@ -178,13 +241,24 @@ header {
                         }
 
                         // "For Healthcare Professionals"
-                        > p {
+                        >p {
                             font-size: 18px;
                             line-height: 32px;
                             font-weight: bold;
                             color: $color-brand-purple;
                         }
                     }
+                }
+
+                .mobile-bottom-item {
+                    background-color: #D9D9D9;
+                    text-decoration: none;
+                    font-size: 18px;
+                    line-height: 32px;
+                    color: #482F8B;
+                    text-align: center;
+                    display: block;
+                    padding: 10px 24px;
                 }
             }
         }

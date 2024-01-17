@@ -1,30 +1,233 @@
 // Xermelo CNE banner
-#banner--cne {
-    background-color: $color-green;
-    
-    > div {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-    
-        body > & {
-            @include desktop-only;
+// #banner--cne {
+//     background-color: $color-green;
+
+//     >div {
+//         padding-top: 0.5rem;
+//         padding-bottom: 0.5rem;
+
+//         body>& {
+//             @include desktop-only;
+//         }
+
+//         >div {
+//             >div {
+//                 @include media(">=small") {
+//                     text-align: center;
+//                 }
+//             }
+//         }
+
+//         a,
+//         a:hover,
+//         a:active,
+//         a:visited {
+//             font-weight: bold;
+//             color: $color-dark-gray;
+//             white-space: nowrap;
+//         }
+//     }
+// }
+
+
+#block-xermelo-clinicalnurseeducatorbanner {
+    .header-top {
+        background-color: #F6F6F6;
+
+        @media only screen and (max-width: 991.98px) {
+            background-color: #D9D9D9;
+
         }
-    
-        > div {
-            > div {
-                @include media(">=small") {
-                    text-align: center;
+
+        .container {
+            @media only screen and (max-width: 991.98px) {
+                padding: 0;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        .content {
+            @include media(">=large") {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .text {
+                font-weight: 700;
+                font-size: 13px;
+
+                @media only screen and (max-width: 991.98px) {
+                    display: none;
+                }
+
+                @include media(">=large") {
+                    font-size: 10px;
+                    line-height: 16px;
+                }
+
+                @include media(">=x-large") {
+                    font-size: 11px;
+                    line-height: 17px;
+                }
+
+                @include media(">=xx-large") {
+                    font-size: 13px;
+                    line-height: 24px;
+                }
+            }
+
+            .top-links {
+                @include media(">=large") {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .links {
+                    ul {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 0;
+                        margin: 0;
+
+                        @media only screen and (max-width: 991.98px) {
+                            padding: 10px;
+
+                        }
+
+                        li {
+                            list-style-type: none;
+                            padding-left: 0;
+                            margin-bottom: 0;
+                            margin-right: 16px;
+
+                            @include media(">=large") {
+                                margin-right: 10px;
+                            }
+
+                            @include media(">=x-large") {
+                                margin-right: 14px;
+                            }
+
+                            @include media(">=xx-large") {
+                                margin-right: 24px;
+                            }
+
+                            a {
+                                font-size: 12px;
+                                line-height: 24px;
+                                color: $color-dark-gray;
+
+                                @include media(">=large") {
+                                    font-size: 10px;
+                                    line-height: 16px;
+                                }
+
+                                @include media(">=x-large") {
+                                    font-size: 11px;
+                                    line-height: 17px;
+                                }
+
+                                @include media(">=xx-large") {
+                                    font-size: 13px;
+                                    line-height: 24px;
+                                }
+                            }
+
+                            &::before {
+                                display: none;
+                            }
+
+                            &:last-child {
+                                @media only screen and (max-width: 991.98px) {
+                                    display: none;
+                                    margin-right: 0;
+                                }
+                            }
+
+                            &:nth-child(1) {
+                                @media only screen and (max-width: 991.98px) {
+                                    width: 50%;
+                                    text-align: center;
+                                }
+                            }
+
+                            &:nth-child(2) {
+                                @media only screen and (max-width: 991.98px) {
+                                    margin-right: 0;
+                                    width: 50%;
+                                    text-align: center;
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .top-buttons {
+                    display: flex;
+
+                    @include media(">=large") {
+                        margin-bottom: -10px;
+                        position: relative;
+                        top: 0;
+                        z-index: 9005;
+                    }
+
+                    a {
+                        font-size: 13px;
+                        font-weight: 700;
+                        line-height: 16px;
+                        text-decoration: none;
+                        padding: 12px 12px;
+                        display: inline-block;
+                        text-align: center;
+
+                        @media only screen and (max-width: 991.98px) {
+
+                            width: 50%;
+                        }
+
+                        @include media(">=large") {
+                            font-size: 12px;
+                            line-height: 16px;
+                            padding: 10px 12px;
+
+                        }
+
+                        @include media(">=x-large") {
+                            font-size: 14px;
+                            line-height: 18px;
+                            padding: 12px 12px;
+
+                        }
+
+                        @include media(">=xx-large") {
+                            font-size: 16px;
+                            line-height: 20px;
+                            padding: 12px 15px;
+
+                        }
+
+                        &:first-child {
+                            background-color: $color-green;
+                            margin-right: 2px;
+                        }
+
+                        &:last-child {
+                            color: $color-white;
+                            background-color: $color-dark-purple;
+                        }
+                    }
                 }
             }
         }
-    
-        a,
-        a:hover,
-        a:active,
-        a:visited {
-            font-weight: bold;
-            color: $color-dark-gray;
-            white-space: nowrap;
-        }
+    }
+}
+
+#block-xermelo-prescribinginformationbanner {
+    @media only screen and (max-width: 991.98px) {
+        display: none !important;
     }
 }
