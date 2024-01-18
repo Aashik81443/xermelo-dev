@@ -146,6 +146,122 @@
         }
     }
 }
+.section-two-col-type-2 {
+    padding-top: 60px;
+
+    @include media(">=large") {
+        padding-top: 100px;
+    }
+
+    .container {
+        @include media("<=medium") {
+            padding: 0;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .content {
+        background: linear-gradient(270deg, #F6F6F6 0%, #F6F6F6 16.56%, #F6F6F6 44.51%, #F6F6F6 67.28%, #F6F6F6 92.55%);
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-left: -16px;
+            margin-right: -16px;
+
+            flex-direction: row-reverse;
+            
+            @include media(">=large") {
+                flex-direction: row-reverse;
+            }
+
+
+            .col-left {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+
+                @include media(">=large") {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+
+                .media {
+                    height: 100%;
+                    position: relative;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+
+                    .dis-text {
+                        position: absolute;
+                        bottom: 7px;
+                        right: 15px;
+                        font-size: 12px;
+                        color: $color-dark-gray;
+                        font-weight: 400;
+                    }
+                }
+
+            }
+
+            .col-right {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+
+                @include media(">=large") {
+                    flex: 0 0 45%;
+                    max-width: 45%;
+                }
+
+                .info {
+                    max-width: 633px;
+                    padding-top: 30px;
+                    padding-bottom: 30px;
+                    padding-left: 24px;
+                    padding-right: 24px;
+
+                    @include media(">=x-large") {
+                        padding-top: 40px;
+                        padding-bottom: 40px;
+                        padding-left: 24px;
+                        padding-right: 50px;
+                    }
+
+                    h3 {
+                        font-size: 28px;
+                        line-height: 32px;
+                        font-weight: 700;
+
+                        @include media(">=large") {
+                            font-size: 32px;
+                            line-height: 36px;
+                        }
+
+                    }
+
+                    .button{
+                        margin-top: 25px;
+                    }
+
+                    .sm-text{
+                        margin-top: 25px;
+                    }
+
+                }
+
+            }
+        }
+    }
+}
 
 .block-counter-card {
     padding-top: 60px;
