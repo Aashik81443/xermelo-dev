@@ -117,7 +117,7 @@
 
     &.circle-icon--12-weeks {
         &:before {
-            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-12weeks@2x.png");
+            background-image: url("/themes/xermelo/images/components/circle-icons/12-Weeks-updated.png");
         }
     }
 
@@ -226,6 +226,26 @@
     &.circle-icon--target {
         &:before {
             background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Target@2x.png");
+        }
+    }
+    &.circle-icon--pills {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-icon-Pills.png");
+        }
+    }
+    &.circle-icon--pillpack {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-Icon-Pillpack@2x.png");
+        }
+    }
+    &.circle-icon--handLimit {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-hand-limit-activities.png");
+        }
+    }
+    &.circle-icon--bathroom {
+        &:before {
+            background-image: url("/themes/xermelo/images/components/circle-icons/XER-bathroom.png");
         }
     }
 }

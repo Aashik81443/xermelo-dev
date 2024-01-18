@@ -46,6 +46,14 @@
         padding-top: 0;
     }
 
+    .container {
+        @include media("<=medium") {
+            padding: 0;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
     .content {
         background: linear-gradient(270deg, #F6F6F6 0%, #F6F6F6 16.56%, #F6F6F6 44.51%, #F6F6F6 67.28%, #F6F6F6 92.55%);
 
@@ -118,6 +126,18 @@
                         padding-bottom: 97px;
                         padding-left: 50px;
                         padding-right: 50px;
+                    }
+
+                    h3 {
+                        font-size: 28px;
+                        line-height: 32px;
+                        font-weight: 700;
+
+                        @include media(">=large") {
+                            font-size: 32px;
+                            line-height: 36px;
+                        }
+
                     }
 
                 }
@@ -224,20 +244,22 @@
 }
 
 .block-site-map {
-    ul{
-        li{
+    ul {
+        li {
             padding-left: 3.5rem;
             color: $color-brand-purple;
             font-weight: 700;
-            a{
+
+            a {
                 color: inherit;
                 font-weight: 700;
             }
 
-            ul{
-                li{
+            ul {
+                li {
                     font-weight: 400;
-                    a{
+
+                    a {
                         font-weight: 400;
                     }
                 }
