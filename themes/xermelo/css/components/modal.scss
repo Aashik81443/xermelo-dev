@@ -3,4 +3,38 @@
         Property overrides
     */
     --modal-close-button-color: #{$color-brand-purple};
+
+    &__content {
+        p {
+            text-align: left;
+        }
+
+        .btn-wrap {
+            display: flex;
+            align-items: center;
+
+            .button--solid {
+
+                @include media("<=small") {
+                    min-width: 16rem;
+                }
+
+                &.btn-cancel {
+                    color: #333333;
+
+                    &::before {
+                        background-color: transparent;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .button-normal {
+        &:before {
+            border: none !important;
+        }
+    }
 }
